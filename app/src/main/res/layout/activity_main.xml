@@ -20,6 +20,7 @@
         android:orientation="vertical"
         android:padding="@dimen/primary_padding">
     <Button
+        android:id="@+id/search_button"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -33,6 +34,7 @@
         android:textColor="@color/black"
         android:textAllCaps="false"/>
     <Button
+        android:id="@+id/media_button"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -46,6 +48,7 @@
         android:textColor="@color/black"
         android:textAllCaps="false"/>
     <Button
+        android:id="@+id/settings_button"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
