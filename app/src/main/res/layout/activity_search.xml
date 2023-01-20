@@ -6,11 +6,11 @@
     tools:context=".SearchActivity">
 
     <TextView
-        android:id="@+id/message"
+        android:id="@+id/search_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="Страница поиска"/>
+        android:text="@string/search_message"/>
 
 </FrameLayout>

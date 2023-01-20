@@ -103,7 +103,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Пользовательское соглашение"
+            android:text="@string/terms_text"
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="@dimen/secondary_text_size" />

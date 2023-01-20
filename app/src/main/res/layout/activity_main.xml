@@ -4,7 +4,7 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3772E7"
+    android:background="@color/main_blue"
     android:orientation="vertical">
     <TextView
         android:layout_width="match_parent"
@@ -25,7 +25,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:backgroundTint="@color/white"
-        app:cornerRadius="20dp"
+        app:cornerRadius="@dimen/corner_radius"
         app:icon="@drawable/search"
         app:iconGravity="textStart"
         app:iconTint="@color/black"
@@ -39,7 +39,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:backgroundTint="@color/white"
-        app:cornerRadius="20dp"
+        app:cornerRadius="@dimen/corner_radius"
         app:icon="@drawable/media"
         app:iconGravity="textStart"
         app:iconTint="@color/black"
@@ -53,7 +53,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:backgroundTint="@color/white"
-        app:cornerRadius="20dp"
+        app:cornerRadius="@dimen/corner_radius"
         app:icon="@drawable/settings"
         app:iconGravity="textStart"
         app:iconTint="@color/black"

@@ -6,11 +6,11 @@
     tools:context=".MediaActivity">
 
     <TextView
-        android:id="@+id/message"
+        android:id="@+id/media_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="Страница медиатеки"/>
+        android:text="@string/media_message"/>
 
 </FrameLayout>
