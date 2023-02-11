@@ -1,0 +1,46 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-mergeDebugResources-27:\\values-en\\values-en.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\dabru\\AndroidStudioProjects\\PlaylistMaker\\app\\src\\main\\res\\values-en\\strings.xml",
+                    "from": {
+                        "startLines": "2,4,3",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "57,179,110",
+                        "endColumns": "51,46,67",
+                        "endOffsets": "104,221,173"
+                    },
+                    "to": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,107,154",
+                        "endColumns": "51,46,67",
+                        "endOffsets": "102,149,217"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "com.practicum.playlistmaker.app-mergeDebugResources-27:/values-en/values-en.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\dabru\\AndroidStudioProjects\\PlaylistMaker\\app\\src\\main\\res\\values-en\\strings.xml",
+                    "from": {
+                        "startLines": "-1",
+                        "startColumns": "-1",
+                        "startOffsets": "-1"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "51",
+                        "endOffsets": "102"
+                    }
+                }
+            ]
+        }
+    ]
+}
