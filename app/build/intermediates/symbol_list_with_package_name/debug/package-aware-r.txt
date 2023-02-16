@@ -2000,6 +2000,8 @@ dimen hint_alpha_material_dark
 dimen hint_alpha_material_light
 dimen hint_pressed_alpha_material_dark
 dimen hint_pressed_alpha_material_light
+dimen horizontal_primary_padding
+dimen horizontal_secondary_padding
 dimen item_touch_helper_max_drag_scroll_per_frame
 dimen item_touch_helper_swipe_escape_max_velocity
 dimen item_touch_helper_swipe_escape_velocity
@@ -2457,7 +2459,6 @@ dimen notification_small_icon_size_as_large
 dimen notification_subtext_size
 dimen notification_top_pad
 dimen notification_top_pad_large_text
-dimen primary_padding
 dimen primary_text_size
 dimen secondary_text_size
 dimen tooltip_corner_radius
@@ -2468,6 +2469,7 @@ dimen tooltip_precise_anchor_threshold
 dimen tooltip_vertical_padding
 dimen tooltip_y_offset_non_touch
 dimen tooltip_y_offset_touch
+dimen vertical_primary_padding
 drawable abc_ab_share_pack_mtrl_alpha
 drawable abc_action_bar_item_background_material
 drawable abc_btn_borderless_material
@@ -2648,7 +2650,6 @@ drawable search
 drawable settings
 drawable share
 drawable support
-drawable switch_off
 drawable test_level_drawable
 drawable tooltip_frame_dark
 drawable tooltip_frame_light

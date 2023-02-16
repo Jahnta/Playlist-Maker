@@ -9,9 +9,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="white">#FFFFFFFF</color>
     <dimen name="corner_radius">20dp</dimen>
-    <dimen name="primary_padding">16sp</dimen>
+    <dimen name="horizontal_primary_padding">16dp</dimen>
+    <dimen name="horizontal_secondary_padding">12dp</dimen>
     <dimen name="primary_text_size">22sp</dimen>
     <dimen name="secondary_text_size">19sp</dimen>
+    <dimen name="vertical_primary_padding">21dp</dimen>
     <string name="app_name">Playlist Maker</string>
     <string name="darktheme_text">Темная тема</string>
     <string name="media_message">Страница медиатеки</string>

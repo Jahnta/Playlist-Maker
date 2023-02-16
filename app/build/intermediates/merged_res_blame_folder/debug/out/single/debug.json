@@ -1,158 +1,142 @@
 [
     {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\drawable-xxhdpi_switch_off.png.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-pngs-24:\\drawable-xxhdpi\\switch_off.png"
+        "merged": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-merged_res-5:\\drawable_arrow_forward.xml.flat",
+        "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-main-7:\\drawable\\arrow_forward.xml"
     },
     {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\drawable_media.xml.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-main-31:\\drawable\\media.xml"
+        "merged": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-merged_res-5:\\drawable-xhdpi_switch_off.png.flat",
+        "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-pngs-0:\\drawable-xhdpi\\switch_off.png"
     },
     {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\xml_data_extraction_rules.xml.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-main-31:\\xml\\data_extraction_rules.xml"
+        "merged": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-merged_res-5:\\drawable_search.xml.flat",
+        "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-main-7:\\drawable\\search.xml"
     },
     {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\drawable_poster.png.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-main-31:\\drawable\\poster.png"
+        "merged": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-merged_res-5:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-main-7:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\drawable_share.xml.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-main-31:\\drawable\\share.xml"
+        "merged": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-merged_res-5:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-main-7:\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.practicum.playlistmaker.app-merged_res-29:/layout_activity_search.xml.flat",
-        "source": "com.practicum.playlistmaker.app-main-31:/layout/activity_search.xml"
+        "merged": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-merged_res-5:\\drawable-xxhdpi_switch_off.png.flat",
+        "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-pngs-0:\\drawable-xxhdpi\\switch_off.png"
     },
     {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-main-31:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+        "merged": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-merged_res-5:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-main-7:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
-        "merged": "com.practicum.playlistmaker.app-merged_res-29:/layout_activity_settings.xml.flat",
-        "source": "com.practicum.playlistmaker.app-main-31:/layout/activity_settings.xml"
+        "merged": "com.practicum.playlistmaker.app-merged_res-5:/layout_activity_settings.xml.flat",
+        "source": "com.practicum.playlistmaker.app-main-7:/layout/activity_settings.xml"
     },
     {
-        "merged": "com.practicum.playlistmaker.app-merged_res-29:/layout_activity_media.xml.flat",
-        "source": "com.practicum.playlistmaker.app-main-31:/layout/activity_media.xml"
+        "merged": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-merged_res-5:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-main-7:\\layout\\activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\layout_activity_media.xml.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-main-31:\\layout\\activity_media.xml"
+        "merged": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-merged_res-5:\\drawable_settings.xml.flat",
+        "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-main-7:\\drawable\\settings.xml"
     },
     {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-main-31:\\mipmap-hdpi\\ic_launcher_round.webp"
+        "merged": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-merged_res-5:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-main-7:\\mipmap-xxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\drawable-hdpi_switch_off.png.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-pngs-24:\\drawable-hdpi\\switch_off.png"
+        "merged": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-merged_res-5:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-main-7:\\mipmap-hdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-main-31:\\mipmap-xhdpi\\ic_launcher_round.webp"
+        "merged": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-merged_res-5:\\drawable-ldpi_switch_off.png.flat",
+        "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-pngs-0:\\drawable-ldpi\\switch_off.png"
     },
     {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-main-31:\\mipmap-mdpi\\ic_launcher.webp"
+        "merged": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-merged_res-5:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-main-7:\\drawable\\ic_launcher_background.xml"
     },
     {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\drawable-ldpi_switch_off.png.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-pngs-24:\\drawable-ldpi\\switch_off.png"
+        "merged": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-merged_res-5:\\drawable-xxxhdpi_switch_off.png.flat",
+        "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-pngs-0:\\drawable-xxxhdpi\\switch_off.png"
     },
     {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\drawable-xxxhdpi_switch_off.png.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-pngs-24:\\drawable-xxxhdpi\\switch_off.png"
+        "merged": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-merged_res-5:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-main-7:\\xml\\backup_rules.xml"
     },
     {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\drawable_ic_launcher_background.xml.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-main-31:\\drawable\\ic_launcher_background.xml"
+        "merged": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-merged_res-5:\\drawable-hdpi_switch_off.png.flat",
+        "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-pngs-0:\\drawable-hdpi\\switch_off.png"
     },
     {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\drawable-anydpi-v24_switch_off.xml.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-pngs-24:\\drawable-anydpi-v24\\switch_off.xml"
+        "merged": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-merged_res-5:\\layout_activity_search.xml.flat",
+        "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-main-7:\\layout\\activity_search.xml"
     },
     {
-        "merged": "com.practicum.playlistmaker.app-merged_res-29:/layout_activity_main.xml.flat",
-        "source": "com.practicum.playlistmaker.app-main-31:/layout/activity_main.xml"
+        "merged": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-merged_res-5:\\drawable_arrow_back.xml.flat",
+        "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-main-7:\\drawable\\arrow_back.xml"
     },
     {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\xml_backup_rules.xml.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-main-31:\\xml\\backup_rules.xml"
+        "merged": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-merged_res-5:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-main-7:\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-main-31:\\mipmap-mdpi\\ic_launcher_round.webp"
+        "merged": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-merged_res-5:\\drawable_media.xml.flat",
+        "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-main-7:\\drawable\\media.xml"
     },
     {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-main-31:\\mipmap-xxxhdpi\\ic_launcher.webp"
+        "merged": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-merged_res-5:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-main-7:\\mipmap-hdpi\\ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-main-31:\\mipmap-anydpi-v26\\ic_launcher.xml"
+        "merged": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-merged_res-5:\\drawable_support.xml.flat",
+        "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-main-7:\\drawable\\support.xml"
     },
     {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-main-31:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+        "merged": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-merged_res-5:\\drawable-anydpi-v24_switch_off.xml.flat",
+        "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-pngs-0:\\drawable-anydpi-v24\\switch_off.xml"
     },
     {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\drawable_search.xml.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-main-31:\\drawable\\search.xml"
+        "merged": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-merged_res-5:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-main-7:\\mipmap-xhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-pngs-24:\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
+        "merged": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-merged_res-5:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-main-7:\\mipmap-mdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-main-31:\\mipmap-xxhdpi\\ic_launcher.webp"
+        "merged": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-merged_res-5:\\layout_activity_media.xml.flat",
+        "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-main-7:\\layout\\activity_media.xml"
     },
     {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\drawable-mdpi_switch_off.png.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-pngs-24:\\drawable-mdpi\\switch_off.png"
+        "merged": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-merged_res-5:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-main-7:\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\drawable-xhdpi_switch_off.png.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-pngs-24:\\drawable-xhdpi\\switch_off.png"
+        "merged": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-merged_res-5:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-main-7:\\xml\\data_extraction_rules.xml"
     },
     {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-main-31:\\mipmap-hdpi\\ic_launcher.webp"
+        "merged": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-merged_res-5:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-main-7:\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-main-31:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+        "merged": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-merged_res-5:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-main-7:\\mipmap-xhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\layout_activity_main.xml.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-main-31:\\layout\\activity_main.xml"
+        "merged": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-merged_res-5:\\drawable-mdpi_switch_off.png.flat",
+        "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-pngs-0:\\drawable-mdpi\\switch_off.png"
     },
     {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\drawable_support.xml.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-main-31:\\drawable\\support.xml"
+        "merged": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-merged_res-5:\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-pngs-0:\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
     },
     {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\drawable_arrow_forward.xml.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-main-31:\\drawable\\arrow_forward.xml"
+        "merged": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-merged_res-5:\\layout_activity_settings.xml.flat",
+        "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-main-7:\\layout\\activity_settings.xml"
     },
     {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\layout_activity_settings.xml.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-main-31:\\layout\\activity_settings.xml"
-    },
-    {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-main-31:\\mipmap-xhdpi\\ic_launcher.webp"
-    },
-    {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\drawable_settings.xml.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-main-31:\\drawable\\settings.xml"
-    },
-    {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\drawable_arrow_back.xml.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-main-31:\\drawable\\arrow_back.xml"
-    },
-    {
-        "merged": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-merged_res-29:\\layout_activity_search.xml.flat",
-        "source": "C:\\Users\\dabru\\.gradle\\daemon\\7.4\\com.practicum.playlistmaker.app-main-31:\\layout\\activity_search.xml"
+        "merged": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-merged_res-5:\\drawable_share.xml.flat",
+        "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\daemon\\7.5\\com.practicum.playlistmaker.app-main-7:\\drawable\\share.xml"
     }
 ]

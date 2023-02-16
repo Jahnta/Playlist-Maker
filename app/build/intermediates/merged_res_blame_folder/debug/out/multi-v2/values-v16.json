@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.practicum.playlistmaker.app-mergeDebugResources-27:/values-v16/values-v16.xml",
+            "outputFile": "com.practicum.playlistmaker.app-mergeDebugResources-3:/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\dabru\\.gradle\\caches\\transforms-3\\f3889f18d4f26e70cef4e17d11226053\\transformed\\core-1.9.0\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\caches\\transforms-3\\4cf47ca9ce2a85aa0923fbfa9e714a39\\transformed\\core-1.9.0\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\dabru\\.gradle\\caches\\transforms-3\\e4a8049e253b5797baef35daaf535720\\transformed\\appcompat-1.6.0\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\caches\\transforms-3\\a4bd54d9712550e961b0ecdc234b03cd\\transformed\\appcompat-1.6.0\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
