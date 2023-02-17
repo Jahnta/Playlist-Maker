@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.practicum.playlistmaker.app-mergeDebugResources-3:/values-port/values-port.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\gradle\\caches\\transforms-3\\a4bd54d9712550e961b0ecdc234b03cd\\transformed\\appcompat-1.6.0\\res\\values-port\\values-port.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "55",
+                        "endOffsets": "106"
+                    }
+                }
+            ]
+        }
+    ]
+}

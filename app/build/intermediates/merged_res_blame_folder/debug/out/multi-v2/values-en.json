@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.practicum.playlistmaker.app-mergeDebugResources-3:/values-en/values-en.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\dabru\\AndroidStudioProjects\\Playlist-Maker\\app\\src\\main\\res\\values-en\\strings.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "57",
+                        "endColumns": "51",
+                        "endOffsets": "104"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "51",
+                        "endOffsets": "102"
+                    }
+                }
+            ]
+        }
+    ]
+}
