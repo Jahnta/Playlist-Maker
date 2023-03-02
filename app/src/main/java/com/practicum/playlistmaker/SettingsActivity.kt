@@ -1,5 +1,6 @@
 package com.practicum.playlistmaker
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -20,7 +21,7 @@ class SettingsActivity : AppCompatActivity() {
         val shareButton = findViewById<ImageView>(R.id.share_button)
         shareButton.setOnClickListener {
             val shareIntent = Intent(Intent.ACTION_SEND)
-            val message = "https://practicum.yandex.ru/android-developer/"
+            val message = getString(R.string.share_link)
             shareIntent.type = "text/plain"
             shareIntent.putExtra(Intent.EXTRA_TEXT, message)
             startActivity(shareIntent)
@@ -30,16 +31,16 @@ class SettingsActivity : AppCompatActivity() {
         supportButton.setOnClickListener {
             val supportIntent = Intent(Intent.ACTION_SENDTO)
             supportIntent.data = Uri.parse("mailto:")
-            supportIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf("dabrusov@yandex.ru"))
-            supportIntent.putExtra(Intent.EXTRA_SUBJECT, arrayOf("Сообщение разработчикам и разработчицам приложения Playlist Maker"))
-            supportIntent.putExtra(Intent.EXTRA_TEXT, arrayOf("Спасибо разработчикам и разработчицам за крутое приложение!"))
+            supportIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf(getString(R.string.support_email_to)))
+            supportIntent.putExtra(Intent.EXTRA_SUBJECT, arrayOf(getString(R.string.support_email_subject)))
+            supportIntent.putExtra(Intent.EXTRA_TEXT, arrayOf(getString(R.string.support_email_text)))
             startActivity(supportIntent)
         }
 
         val licenseButton = findViewById<ImageView>(R.id.license_button)
         licenseButton.setOnClickListener {
             val licenseIntent = Intent(Intent.ACTION_VIEW)
-            licenseIntent.data = Uri.parse("https://yandex.ru/legal/practicum_offer/")
+            licenseIntent.data = Uri.parse(getString(R.string.license_link))
             startActivity(licenseIntent)
         }
 

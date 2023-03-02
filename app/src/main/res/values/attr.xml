@@ -2,8 +2,12 @@
 <resources>
     <attr name="background_color_primary" format="reference" />
     <attr name="background_color_secondary" format="reference" />
+    <attr name="background_color_search" format="reference" />
     <attr name="text_color_primary" format="reference" />
     <attr name="text_color_secondary" format="reference" />
+    <attr name="text_color_searchHint" format="reference" />
+    <attr name="icon_color_primary" format="reference" />
+    <attr name="icon_color_secondary" format="reference" />
     <attr name="button_color_primary" format="reference" />
     <attr name="button_color_secondary" format="reference" />
     <attr name="on_button_color_primary" format="reference" />

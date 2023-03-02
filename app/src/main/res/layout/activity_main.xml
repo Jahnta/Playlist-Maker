@@ -10,17 +10,17 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/horizontal_primary_padding"
+        android:padding="@dimen/padding_regular"
         android:text="@string/app_name"
         android:textAllCaps="false"
         android:textColor="@color/YP_White"
-        android:textSize="@dimen/primary_text_size" />
+        android:textSize="@dimen/text_size_bigger" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="@dimen/horizontal_primary_padding">
+        android:padding="@dimen/padding_regular">
 
         <Button
             android:id="@+id/search_button"
