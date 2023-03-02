@@ -4,8 +4,8 @@
     <string name="media_text">Медиатека</string>
     <string name="setting_text">Настройки</string>
     <string name="darktheme_text">Темная тема</string>
-    <string name="support_text">Поделиться приложением</string>
-    <string name="share_text">Написать в поддержку</string>
+    <string name="support_text">Написать в поддержку</string>
+    <string name="share_text">Поделиться приложением </string>
     <string name="terms_text">Пользовательское соглашение</string>
     <string name="media_message">Страница медиатеки</string>
     <string name="search_message">Страница поиска</string>
