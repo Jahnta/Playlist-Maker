@@ -9,27 +9,16 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        style="@style/header_layout"
+        android:layout_marginBottom="@dimen/margin_small">
 
         <ImageView
             android:id="@+id/back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/arrow_back"
-            app:tint="?attr/text_color_primary" />
+            style="@style/header_back_button" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="@dimen/padding_regular"
-            android:text="@string/search_text"
-            android:textAllCaps="false"
-            android:textColor="?attr/text_color_primary"
-            android:textSize="@dimen/text_size_bigger" />
+            style="@style/header_text"
+            android:text="@string/search_text"/>
     </LinearLayout>
 
     <LinearLayout style="@style/search_layout">
@@ -39,13 +28,14 @@
             android:src="@drawable/search_icon_light_small" />
 
         <EditText
-            style="@style/search_layout_input"
             android:id="@+id/inputEditText"
-            android:hint="@string/search_text"/>
+            style="@style/search_layout_input"
+            android:hint="@string/search_text" />
 
         <ImageView
             android:id="@+id/clearIcon"
             style="@style/search_layout_icons.end"
-            android:src="@drawable/clear_button_light_small" />
+            android:src="@drawable/clear_button_light_small"
+            android:visibility="gone" />
     </LinearLayout>
 </LinearLayout>

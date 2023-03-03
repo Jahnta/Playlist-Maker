@@ -9,33 +9,21 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        style="@style/header_layout"
+        android:layout_marginBottom="@dimen/margin_big">
 
         <ImageView
             android:id="@+id/back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/arrow_back"
-            app:tint="?attr/text_color_primary" />
+            style="@style/header_back_button" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="@dimen/padding_regular"
-            android:text="@string/setting_text"
-            android:textAllCaps="false"
-            android:textColor="?attr/text_color_primary"
-            android:textSize="@dimen/text_size_bigger" />
+            style="@style/header_text"
+            android:text="@string/setting_text"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:orientation="vertical">
 
         <LinearLayout style="@style/settings_option">

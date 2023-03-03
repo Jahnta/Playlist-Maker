@@ -10,10 +10,19 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 
+
 class SearchActivity : AppCompatActivity() {
+
+    companion object {
+        const val searchInput = "searchInput"
+    }
+
+    private var savedText = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
+
 
         val backButton = findViewById<ImageView>(R.id.back)
         backButton.setOnClickListener {
@@ -34,6 +43,7 @@ class SearchActivity : AppCompatActivity() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 clearButton.visibility = clearButtonVisibility(s)
+                savedText = s.toString()
             }
 
             override fun afterTextChanged(s: Editable?) {
@@ -51,4 +61,15 @@ class SearchActivity : AppCompatActivity() {
             View.VISIBLE
         }
     }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(searchInput, savedText)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        savedText = savedInstanceState.getString(searchInput, "")
+    }
+
 }

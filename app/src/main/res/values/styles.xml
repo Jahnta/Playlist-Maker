@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="header_layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:padding">@dimen/padding_regular</item>
+    </style>
+
+    <style name="header_back_button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:src">@drawable/arrow_back_regular_black</item>
+        <item name="tint">?attr/text_color_primary</item>
+        <item name="android:layout_marginEnd">@dimen/margin_big</item>
+    </style>
+
+    <style name="header_text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textColor">?attr/text_color_primary</item>
+        <item name="android:textSize">@dimen/text_size_bigger</item>
+    </style>
+
     <style name="main_button" parent="Widget.MaterialComponents.Button.UnelevatedButton">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">0dp</item>
@@ -39,12 +63,13 @@
         <item name="android:layout_marginLeft">@dimen/padding_small</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:backgroundTint">?attr/button_color_secondary</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
     </style>
 
     <style name="search_layout">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_margin">16dp</item>
+        <item name="android:layout_marginHorizontal">@dimen/margin_regular</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:background">@drawable/search_background</item>
         <item name="android:paddingHorizontal">12dp</item>
@@ -59,11 +84,11 @@
     </style>
 
     <style name="search_layout_icons.start">
-        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:layout_marginEnd">@dimen/margin_small</item>
     </style>
 
     <style name="search_layout_icons.end">
-        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginStart">@dimen/margin_small</item>
     </style>
 
     <style name="search_layout_input">

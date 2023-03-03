@@ -12,7 +12,7 @@
 
     <string name="share_link" translatable="false">https://practicum.yandex.ru/android-developer/</string>
     <string name="support_email_to" translatable="false">dabrusov@yandex.ru</string>
-    <string name="support_email_subject" translatable="false">dabrusov@yandex.ru</string>
-    <string name="support_email_text" translatable="false">dabrusov@yandex.ru</string>
+    <string name="support_email_subject" translatable="false">Сообщение разработчикам и разработчицам приложения Playlist Maker</string>
+    <string name="support_email_text" translatable="false">Спасибо разработчикам и разработчицам за крутое приложение!</string>
     <string name="license_link" translatable="false">https://yandex.ru/legal/practicum_offer/</string>
 </resources>

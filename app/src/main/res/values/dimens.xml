@@ -5,7 +5,10 @@
     <dimen name="text_size_regular">16sp</dimen>
     <dimen name="padding_regular">16dp</dimen>
     <dimen name="padding_small">12dp</dimen>
-    <dimen name="padding_smaller">8.5dp</dimen>
+    <dimen name="padding_smaller">8dp</dimen>
     <dimen name="padding_bigger">21dp</dimen>
     <dimen name="corner_radius">20dp</dimen>
+    <dimen name="margin_big">24dp</dimen>
+    <dimen name="margin_regular">16dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
 </resources>
