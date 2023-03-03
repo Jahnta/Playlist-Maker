@@ -15,6 +15,7 @@
         <item name="android:src">@drawable/arrow_back_regular_black</item>
         <item name="tint">?attr/text_color_primary</item>
         <item name="android:layout_marginEnd">@dimen/margin_big</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
     </style>
 
     <style name="header_text">
