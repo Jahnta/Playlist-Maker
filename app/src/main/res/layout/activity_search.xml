@@ -1,16 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SearchActivity">
+    android:background="?attr/background_color_primary"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/search_message"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="@string/search_message"/>
+    <LinearLayout
+        style="@style/header_layout"
+        android:layout_marginBottom="@dimen/margin_small">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/back"
+            style="@style/header_back_button" />
+
+        <TextView
+            style="@style/header_text"
+            android:text="@string/search_text"/>
+    </LinearLayout>
+
+    <LinearLayout style="@style/search_layout">
+
+        <ImageView
+            style="@style/search_layout_icons.start"
+            android:src="@drawable/search_icon_light_small" />
+
+        <EditText
+            android:id="@+id/inputEditText"
+            style="@style/search_layout_input"
+            android:hint="@string/search_text" />
+
+        <ImageView
+            android:id="@+id/clearIcon"
+            style="@style/search_layout_icons.end"
+            android:src="@drawable/clear_button_light_small"
+            android:visibility="gone" />
+    </LinearLayout>
+</LinearLayout>

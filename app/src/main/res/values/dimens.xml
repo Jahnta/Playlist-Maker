@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="primary_text_size">22sp</dimen>
-    <dimen name="secondary_text_size">19sp</dimen>
-    <dimen name="horizontal_primary_padding">16dp</dimen>
-    <dimen name="horizontal_secondary_padding">12dp</dimen>
-    <dimen name="vertical_primary_padding">21dp</dimen>
+    <dimen name="text_size_bigger">22sp</dimen>
+    <dimen name="text_size_big">19sp</dimen>
+    <dimen name="text_size_regular">16sp</dimen>
+    <dimen name="padding_regular">16dp</dimen>
+    <dimen name="padding_small">12dp</dimen>
+    <dimen name="padding_smaller">8dp</dimen>
+    <dimen name="padding_bigger">21dp</dimen>
     <dimen name="corner_radius">20dp</dimen>
+    <dimen name="margin_big">24dp</dimen>
+    <dimen name="margin_regular">16dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
 </resources>
