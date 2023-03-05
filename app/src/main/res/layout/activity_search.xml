@@ -21,7 +21,8 @@
             android:text="@string/search_text"/>
     </LinearLayout>
 
-    <LinearLayout style="@style/search_layout">
+    <LinearLayout style="@style/search_layout"
+        android:layout_marginBottom="24dp">
 
         <ImageView
             style="@style/search_layout_icons.start"
@@ -38,4 +39,10 @@
             android:src="@drawable/clear_button_light_small"
             android:visibility="gone" />
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/trackList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 </LinearLayout>
