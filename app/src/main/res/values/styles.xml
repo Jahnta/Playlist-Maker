@@ -105,4 +105,40 @@
         <item name="android:textColorHint">?attr/text_color_searchHint</item>
         <item name="android:textSize">@dimen/text_size_regular</item>
     </style>
+
+    <style name="track_layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingVertical">8dp</item>
+        <item name="android:paddingStart">13dp</item>
+        <item name="android:paddingEnd">12dp</item>
+    </style>
+
+    <style name="track_name">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textColor">?attr/text_color_primary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginBottom">1dp</item>
+    </style>
+
+    <style name="artist_name">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">?attr/text_color_secondary</item>
+        <item name="android:textSize">11sp</item>
+    </style>
+
+    <style name="track_time">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">?attr/text_color_secondary</item>
+        <item name="android:textSize">11sp</item>
+    </style>
+
+
 </resources>
