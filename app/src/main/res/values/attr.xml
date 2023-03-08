@@ -10,5 +10,7 @@
     <attr name="icon_color_secondary" format="reference" />
     <attr name="button_color_primary" format="reference" />
     <attr name="button_color_secondary" format="reference" />
+    <attr name="button_color_other" format="reference" />
     <attr name="on_button_color_primary" format="reference" />
+    <attr name="on_button_color_other" format="reference" />
 </resources>

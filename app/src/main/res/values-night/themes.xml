@@ -21,7 +21,9 @@
         <item name="icon_color_primary">@color/YP_Black</item>
         <item name="button_color_primary">@color/YP_White</item>
         <item name="button_color_secondary">@color/YP_White</item>
+        <item name="button_color_other">@color/YP_White</item>
         <item name="on_button_color_primary">@color/YP_Black</item>
+        <item name="on_button_color_other">@color/YP_Black</item>
         <item name="colorControlActivated">@color/YP_Blue</item>
     </style>
 </resources>
