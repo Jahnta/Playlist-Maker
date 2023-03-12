@@ -21,9 +21,7 @@
             android:text="@string/search_text" />
     </LinearLayout>
 
-    <LinearLayout
-        style="@style/search_layout"
-        android:layout_marginBottom="24dp">
+    <LinearLayout style="@style/search_layout">
 
         <ImageView
             style="@style/search_layout_icons.start"
@@ -43,6 +41,27 @@
             android:visibility="gone" />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/searchHistoryLayout"
+        style="@style/placeholder_layout"
+        android:layout_marginTop="32dp">
+
+        <TextView
+            android:text="@string/search_history_message"
+            style="@style/search_history_message" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/searchHistoryList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="48dp"/>
+
+        <Button
+            android:id="@+id/clearHistoryButton"
+            style="@style/button_refresh"
+            android:layout_marginTop="-48dp"
+            android:text="@string/clear_history" />
+    </LinearLayout>
 
 
     <LinearLayout
@@ -51,8 +70,7 @@
 
         <ImageView
             android:id="@+id/placeholderImage"
-            style="@style/placeholder_image">
-        </ImageView>
+            style="@style/placeholder_image"></ImageView>
 
         <TextView
             android:id="@+id/placeholderMessage"
@@ -60,14 +78,14 @@
 
         <Button
             android:id="@+id/refreshButton"
-            android:text="@string/refresh"
             style="@style/button_refresh"
-            android:visibility="gone"/>
+            android:text="@string/refresh"/>
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/trackList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp" />
 
 </LinearLayout>

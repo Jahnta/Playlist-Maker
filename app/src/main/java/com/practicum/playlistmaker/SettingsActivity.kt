@@ -10,7 +10,7 @@ import com.google.android.material.switchmaterial.SwitchMaterial
 
 class SettingsActivity : AppCompatActivity() {
 
-        private lateinit var backButton: ImageView
+    private lateinit var backButton: ImageView
     private lateinit var themeSwitcher: SwitchMaterial
     private lateinit var shareButton: ImageView
     private lateinit var supportButton: ImageView
