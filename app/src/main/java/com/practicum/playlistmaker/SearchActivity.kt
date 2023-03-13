@@ -20,17 +20,17 @@ class SearchActivity : AppCompatActivity() {
 
     companion object {
         const val searchInput = "searchInput"
+        const val itunesBaseUrl = "https://itunes.apple.com"
+        const val maxSearchHistorySize = 10
     }
 
     private var savedText = ""
     private var lastQuery = ""
-
-    private val itunesBaseUrl = "https://itunes.apple.com"
-
     private val retrofit =
-        Retrofit.Builder().baseUrl(itunesBaseUrl).addConverterFactory(GsonConverterFactory.create())
+        Retrofit.Builder()
+            .baseUrl(itunesBaseUrl)
+            .addConverterFactory(GsonConverterFactory.create())
             .build()
-
     private val itunesService = retrofit.create(iTunesApi::class.java)
 
     private lateinit var backButton: ImageView
@@ -41,14 +41,22 @@ class SearchActivity : AppCompatActivity() {
     private lateinit var placeholderImage: ImageView
     private lateinit var placeholderMessage: TextView
     private lateinit var refreshButton: Button
+    private lateinit var searchHistory: SearchHistory
+    private lateinit var searchHistoryLayout: LinearLayout
+    private lateinit var searchHistoryList: RecyclerView
+    private lateinit var clearHistoryButton: Button
+    private lateinit var trackAdapter: TrackAdapter
+    private lateinit var searchHistoryAdapter: TrackAdapter
 
     private val tracks = ArrayList<Track>()
-
-    private val adapter = TrackAdapter()
+    private var searchHistoryTracks = ArrayList<Track>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
+
+        searchHistory = SearchHistory(getSharedPreferences(PLAYLIST_MAKER_PREFERENCES, MODE_PRIVATE))
+        searchHistoryTracks.addAll(searchHistory.getTracks())
 
         backButton = findViewById(R.id.back)
         queryInput = findViewById(R.id.queryInput)
@@ -58,6 +66,9 @@ class SearchActivity : AppCompatActivity() {
         placeholderImage = findViewById(R.id.placeholderImage)
         placeholderMessage = findViewById(R.id.placeholderMessage)
         refreshButton = findViewById(R.id.refreshButton)
+        searchHistoryLayout = findViewById(R.id.searchHistoryLayout)
+        searchHistoryList = findViewById(R.id.searchHistoryList)
+        clearHistoryButton = findViewById(R.id.clearHistoryButton)
 
         backButton.setOnClickListener {
             finish()
@@ -66,13 +77,10 @@ class SearchActivity : AppCompatActivity() {
         clearButton.setOnClickListener {
             queryInput.setText("")
             tracks.clear()
-            adapter.notifyDataSetChanged()
+            trackAdapter.notifyDataSetChanged()
             placeholderLayout.visibility = View.GONE
         }
 
-        adapter.tracks = tracks
-        trackList.layoutManager = LinearLayoutManager(this)
-        trackList.adapter = adapter
 
         val simpleTextWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -81,6 +89,8 @@ class SearchActivity : AppCompatActivity() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 clearButton.visibility = clearButtonVisibility(s)
+                searchHistoryLayout.visibility =
+                    if (queryInput.hasFocus() && s?.isEmpty() == true && searchHistoryTracks.isNotEmpty()) View.VISIBLE else View.GONE
                 savedText = s.toString()
             }
 
@@ -99,12 +109,64 @@ class SearchActivity : AppCompatActivity() {
             false
         }
 
+        queryInput.setOnFocusChangeListener { view, hasFocus ->
+            searchHistoryLayout.visibility =
+                (if (hasFocus && queryInput.text.isEmpty() && searchHistoryTracks.isNotEmpty()) View.VISIBLE else View.GONE)
+        }
+
         refreshButton.setOnClickListener {
             getTracks(lastQuery)
         }
 
+        trackList.layoutManager = LinearLayoutManager(this)
+        trackAdapter = TrackAdapter(tracks) {
+            addTrackToHistory(it)
+        }
+        trackList.adapter = trackAdapter
+
+        clearHistoryButton.setOnClickListener {
+            searchHistoryTracks.clear()
+            searchHistory.clear()
+            searchHistoryLayout.visibility = View.GONE
+        }
+
+        searchHistoryList.layoutManager = LinearLayoutManager(this)
+        searchHistoryAdapter = TrackAdapter(searchHistoryTracks) {
+            // пусто
+        }
+        searchHistoryList.adapter = searchHistoryAdapter
 
     }
+
+    override fun onStop() {
+        super.onStop()
+        searchHistory.putTracks(searchHistoryTracks)
+    }
+
+    private fun addTrackToHistory(track: Track) {
+        for (index in searchHistoryTracks.indices) {
+            if (track.trackId == searchHistoryTracks[index].trackId) {
+                searchHistoryTracks.removeAt(index)
+                searchHistoryTracks.add(0, track)
+                searchHistoryAdapter.notifyItemMoved(index,0)
+                return
+            }
+        }
+
+        if (searchHistoryTracks.size < maxSearchHistorySize) {
+            searchHistoryTracks.add(0, track)
+            searchHistoryAdapter.notifyDataSetChanged()
+            searchHistoryAdapter.notifyItemRangeChanged(0, searchHistoryTracks.size)
+        } else {
+            searchHistoryTracks.removeAt(searchHistoryTracks.size - 1)
+            searchHistoryAdapter.notifyDataSetChanged()
+            searchHistoryAdapter.notifyItemRangeChanged(
+                searchHistoryTracks.size - 1,
+                searchHistoryTracks.size
+            )
+        }
+    }
+
 
     private fun clearButtonVisibility(s: CharSequence?): Int {
         return if (s.isNullOrEmpty()) {
@@ -135,7 +197,7 @@ class SearchActivity : AppCompatActivity() {
                         tracks.clear()
                         if (response.body()?.results?.isNotEmpty() == true) {
                             tracks.addAll(response.body()?.results!!)
-                            adapter.notifyDataSetChanged()
+                            trackAdapter.notifyDataSetChanged()
                         }
                         if (tracks.isEmpty()) {
                             showMessage(getString(R.string.no_data), "")
@@ -159,7 +221,7 @@ class SearchActivity : AppCompatActivity() {
         if (text.isNotEmpty()) {
             placeholderLayout.visibility = View.VISIBLE
             tracks.clear()
-            adapter.notifyDataSetChanged()
+            trackAdapter.notifyDataSetChanged()
             placeholderMessage.text = text
             if (text == getString(R.string.no_data)) {
                 placeholderImage.setImageResource(R.drawable.error_no_data)

@@ -32,8 +32,8 @@
                 style="@style/setting_option_text"
                 android:text="@string/darktheme_text" />
 
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/switch_theme"
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/themeSwitcher"
                 style="@style/setting_option_button"
                 android:layout_height="@dimen/text_size_bigger" />
         </LinearLayout>
