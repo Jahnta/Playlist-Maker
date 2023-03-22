@@ -10,7 +10,7 @@
 
     <LinearLayout
         style="@style/header_layout"
-        android:layout_marginBottom="@dimen/margin_small">
+        android:layout_marginBottom="@dimen/margin_8dp">
 
         <ImageView
             android:id="@+id/back"

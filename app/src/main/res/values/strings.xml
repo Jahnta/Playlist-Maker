@@ -23,4 +23,7 @@
     <string name="refresh">Обновить</string>
     <string name="clear_history">Очистить историю</string>
     <string name="search_history_message">Вы искали</string>
+    <string name="duration_text">Длительность</string>
+    <string name="trackTime_placeholder">0:30</string>
+    <string name="trackAlbumText">Альбом</string>
 </resources>
