@@ -21,11 +21,11 @@ class PlayerActivity : AppCompatActivity() {
     private lateinit var coverImage: ImageView
     private lateinit var trackName: TextView
     private lateinit var artistName: TextView
-    private lateinit var duration: TextView
-    private lateinit var albumName: TextView
-    private lateinit var year: TextView
-    private lateinit var genre: TextView
-    private lateinit var country: TextView
+    private lateinit var trackDuration: TextView
+    private lateinit var trackAlbum: TextView
+    private lateinit var trackYear: TextView
+    private lateinit var trackGenre: TextView
+    private lateinit var trackCountry: TextView
     private lateinit var addButton: ImageButton
     private lateinit var playButton: ImageButton
     private lateinit var likeButton: ImageButton
@@ -40,11 +40,11 @@ class PlayerActivity : AppCompatActivity() {
         coverImage = findViewById(R.id.trackCover)
         trackName = findViewById(R.id.trackName)
         artistName = findViewById(R.id.artistName)
-        duration = findViewById(R.id.trackDuration)
-        albumName = findViewById(R.id.changeable_album)
-        year = findViewById(R.id.changeable_year)
-        genre = findViewById(R.id.changeable_genre)
-        country = findViewById(R.id.changeable_country)
+        trackDuration = findViewById(R.id.trackDuration)
+        trackAlbum = findViewById(R.id.trackAlbum)
+        trackYear = findViewById(R.id.trackYear)
+        trackGenre = findViewById(R.id.trackGenre)
+        trackCountry = findViewById(R.id.trackCountry)
         addButton = findViewById(R.id.add_button)
         playButton = findViewById(R.id.play_button)
         likeButton = findViewById(R.id.like_button)
@@ -62,11 +62,11 @@ class PlayerActivity : AppCompatActivity() {
             .transform(RoundedCorners(cornerRadius)).into(coverImage)
         trackName.text = track.trackName
         artistName.text = track.artistName
-        duration.text = SimpleDateFormat("mm:ss", Locale.getDefault()).format(track.trackTimeMillis)
-        albumName.text = track.collectionName
-        year.text = track.releaseDate.substring(0, 4)
-        genre.text = track.primaryGenreName
-        country.text = track.country
+        trackDuration.text = SimpleDateFormat("mm:ss", Locale.getDefault()).format(track.trackTimeMillis)
+        trackAlbum.text = track.collectionName
+        trackYear.text = track.releaseDate.substring(0, 4)
+        trackGenre.text = track.primaryGenreName
+        trackCountry.text = track.country
 
     }
 }

@@ -26,4 +26,7 @@
     <string name="duration_text">Длительность</string>
     <string name="trackTime_placeholder">0:30</string>
     <string name="trackAlbumText">Альбом</string>
+    <string name="trackYearText">Год</string>
+    <string name="trackGenreText">Жанр</string>
+    <string name="trackCountryText">Страна</string>
 </resources>

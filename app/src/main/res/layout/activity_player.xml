@@ -163,7 +163,7 @@
         android:text="@string/duration_text"
         android:textColor="?attr/text_color_primary"
         android:textSize="13sp"
-        app:layout_constraintBottom_toTopOf="@id/album"
+        app:layout_constraintBottom_toTopOf="@id/trackAlbumText"
         app:layout_constraintStart_toStartOf="@id/layout_guideline_left"
         app:layout_constraintTop_toTopOf="@id/text_guideline_top"
         app:layout_constraintVertical_chainStyle="spread" />
@@ -182,7 +182,7 @@
         tools:text="5:35" />
 
     <TextView
-        android:id="@+id/album"
+        android:id="@+id/trackAlbumText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -190,14 +190,14 @@
         android:text="@string/trackAlbumText"
         android:textColor="?attr/text_color_primary"
         android:textSize="13sp"
-        app:layout_constraintBottom_toTopOf="@id/year"
-        app:layout_constraintEnd_toStartOf="@id/changeable_album"
+        app:layout_constraintBottom_toTopOf="@id/trackYearText"
+        app:layout_constraintEnd_toStartOf="@id/trackAlbum"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/trackDurationText" />
 
     <TextView
-        android:id="@+id/changeable_album"
+        android:id="@+id/trackAlbum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
@@ -209,26 +209,26 @@
         android:textSize="13sp"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/album"
-        app:layout_constraintTop_toTopOf="@id/album"
+        app:layout_constraintStart_toEndOf="@id/trackAlbumText"
+        app:layout_constraintTop_toTopOf="@id/trackAlbumText"
         app:layout_constraintVertical_chainStyle="spread"
         tools:text="Yesterday (Remastered 2009)" />
 
     <TextView
-        android:id="@+id/year"
+        android:id="@+id/trackYearText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:fontFamily="@font/ys_display_regular"
-        android:text="Год"
+        android:text="@string/trackYearText"
         android:textColor="?attr/text_color_primary"
         android:textSize="13sp"
-        app:layout_constraintBottom_toTopOf="@id/genre"
+        app:layout_constraintBottom_toTopOf="@id/trackGenreText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/album" />
+        app:layout_constraintTop_toBottomOf="@id/trackAlbumText" />
 
     <TextView
-        android:id="@+id/changeable_year"
+        android:id="@+id/trackYear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -236,24 +236,24 @@
         android:textColor="?attr/text_color_primary"
         android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/year"
+        app:layout_constraintTop_toTopOf="@id/trackYearText"
         tools:text="1965" />
 
     <TextView
-        android:id="@+id/genre"
+        android:id="@+id/trackGenreText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:fontFamily="@font/ys_display_regular"
-        android:text="Жанр"
+        android:text="@string/trackGenreText"
         android:textColor="?attr/text_color_primary"
         android:textSize="13sp"
-        app:layout_constraintBottom_toTopOf="@id/country"
+        app:layout_constraintBottom_toTopOf="@id/trackCountryText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/year" />
+        app:layout_constraintTop_toBottomOf="@id/trackYearText" />
 
     <TextView
-        android:id="@+id/changeable_genre"
+        android:id="@+id/trackGenre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -264,24 +264,24 @@
         android:textSize="13sp"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/genre"
+        app:layout_constraintTop_toTopOf="@id/trackGenreText"
         tools:text="Rock" />
 
     <TextView
-        android:id="@+id/country"
+        android:id="@+id/trackCountryText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:fontFamily="@font/ys_display_regular"
-        android:text="Страна"
+        android:text="@string/trackCountryText"
         android:textColor="?attr/text_color_primary"
         android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="@id/text_bottom_guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/genre" />
+        app:layout_constraintTop_toBottomOf="@id/trackGenreText" />
 
     <TextView
-        android:id="@+id/changeable_country"
+        android:id="@+id/trackCountry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -292,7 +292,7 @@
         android:textSize="13sp"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/country"
+        app:layout_constraintTop_toTopOf="@id/trackCountryText"
         tools:text="Великобритания" />
 
 
