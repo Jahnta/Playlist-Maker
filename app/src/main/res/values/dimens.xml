@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="text_size_bigger">22sp</dimen>
-    <dimen name="text_size_big">19sp</dimen>
-    <dimen name="text_size_regular">16sp</dimen>
-    <dimen name="padding_regular">16dp</dimen>
-    <dimen name="padding_small">12dp</dimen>
-    <dimen name="padding_smaller">8dp</dimen>
-    <dimen name="padding_bigger">21dp</dimen>
-    <dimen name="corner_radius">20dp</dimen>
-    <dimen name="margin_big">24dp</dimen>
-    <dimen name="margin_regular">16dp</dimen>
-    <dimen name="margin_small">8dp</dimen>
-    <dimen name="image_small">45dp</dimen>
+    <dimen name="text_size_22">22sp</dimen>
+    <dimen name="text_size_19">19sp</dimen>
+    <dimen name="text_size_16">16sp</dimen>
+    <dimen name="padding_21">21dp</dimen>
+    <dimen name="padding_16">16dp</dimen>
+    <dimen name="padding_12">12dp</dimen>
+    <dimen name="padding_8">8dp</dimen>
+    <dimen name="corner_radius_20">20dp</dimen>
+    <dimen name="margin_24">24dp</dimen>
+    <dimen name="margin_16">16dp</dimen>
+    <dimen name="margin_8dp">8dp</dimen>
+    <dimen name="image_45">45dp</dimen>
+    <dimen name="corner_radius_8">8dp</dimen>
 </resources>

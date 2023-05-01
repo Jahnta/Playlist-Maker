@@ -1,5 +1,6 @@
 package com.practicum.playlistmaker
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -9,6 +10,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -121,6 +123,7 @@ class SearchActivity : AppCompatActivity() {
         trackList.layoutManager = LinearLayoutManager(this)
         trackAdapter = TrackAdapter(tracks) {
             addTrackToHistory(it)
+            showPlayer(it)
         }
         trackList.adapter = trackAdapter
 
@@ -132,7 +135,7 @@ class SearchActivity : AppCompatActivity() {
 
         searchHistoryList.layoutManager = LinearLayoutManager(this)
         searchHistoryAdapter = TrackAdapter(searchHistoryTracks) {
-            // пусто
+            showPlayer(it)
         }
         searchHistoryList.adapter = searchHistoryAdapter
 
@@ -165,6 +168,13 @@ class SearchActivity : AppCompatActivity() {
                 searchHistoryTracks.size
             )
         }
+    }
+
+    private fun showPlayer(track: Track) {
+        val intent = Intent(this, PlayerActivity::class.java).apply {
+            putExtra(PlayerActivity.TRACK_DATA, Gson().toJson(track))
+        }
+        startActivity(intent)
     }
 
 

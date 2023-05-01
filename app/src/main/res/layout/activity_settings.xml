@@ -10,7 +10,7 @@
 
     <LinearLayout
         style="@style/header_layout"
-        android:layout_marginBottom="@dimen/margin_big">
+        android:layout_marginBottom="@dimen/margin_24">
 
         <ImageView
             android:id="@+id/back"
@@ -35,7 +35,7 @@
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/themeSwitcher"
                 style="@style/setting_option_button"
-                android:layout_height="@dimen/text_size_bigger" />
+                android:layout_height="@dimen/text_size_22" />
         </LinearLayout>
 
         <LinearLayout style="@style/settings_option">
