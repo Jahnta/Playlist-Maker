@@ -1,7 +1,10 @@
 package com.practicum.playlistmaker
 
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
@@ -15,6 +18,11 @@ class PlayerActivity : AppCompatActivity() {
 
     companion object {
         const val TRACK_DATA = "track_data"
+        const val DELAY = 500L
+        private const val STATE_DEFAULT = 0
+        private const val STATE_PREPARED = 1
+        private const val STATE_PLAYING = 2
+        private const val STATE_PAUSED = 3
     }
 
     private lateinit var backButton: ImageView
@@ -29,8 +37,13 @@ class PlayerActivity : AppCompatActivity() {
     private lateinit var addButton: ImageButton
     private lateinit var playButton: ImageButton
     private lateinit var likeButton: ImageButton
+    private lateinit var playTime: TextView
 
     private lateinit var track: Track
+
+    private var mediaPlayer = MediaPlayer()
+    private var playerState = STATE_DEFAULT
+    private val handler = Handler(Looper.getMainLooper())
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,12 +61,14 @@ class PlayerActivity : AppCompatActivity() {
         addButton = findViewById(R.id.add_button)
         playButton = findViewById(R.id.play_button)
         likeButton = findViewById(R.id.like_button)
+        playTime = findViewById(R.id.playTime)
 
         track = Gson().fromJson((intent.getStringExtra(TRACK_DATA)), Track::class.java)
 
         backButton.setOnClickListener {
             finish()
         }
+
 
         val cornerRadius = this.resources.getDimensionPixelSize(R.dimen.corner_radius_8)
 
@@ -62,11 +77,83 @@ class PlayerActivity : AppCompatActivity() {
             .transform(RoundedCorners(cornerRadius)).into(coverImage)
         trackName.text = track.trackName
         artistName.text = track.artistName
-        trackDuration.text = SimpleDateFormat("mm:ss", Locale.getDefault()).format(track.trackTimeMillis)
+        trackDuration.text =
+            SimpleDateFormat("mm:ss", Locale.getDefault()).format(track.trackTimeMillis)
         trackAlbum.text = track.collectionName
         trackYear.text = track.releaseDate.substring(0, 4)
         trackGenre.text = track.primaryGenreName
         trackCountry.text = track.country
 
+        preparePlayer()
+
+        playButton.setOnClickListener {
+            playbackControl()
+        }
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+        pausePlayer()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        handler.removeCallbacks(createUpdateTimerTask())
+        mediaPlayer.release()
+    }
+
+    private fun preparePlayer() {
+        mediaPlayer.setDataSource(track.previewUrl)
+        mediaPlayer.prepareAsync()
+        mediaPlayer.setOnPreparedListener {
+            playerState = STATE_PREPARED
+        }
+        mediaPlayer.setOnCompletionListener {
+            playButton.setImageResource(R.drawable.play_button)
+            handler.removeCallbacks(createUpdateTimerTask())
+            playTime.text = "00:00"
+            playerState = STATE_PREPARED
+        }
+    }
+
+    private fun startPlayer() {
+        mediaPlayer.start()
+        playButton.setImageResource(R.drawable.pause_button)
+        handler.post(createUpdateTimerTask())
+        playerState = STATE_PLAYING
+    }
+
+    private fun pausePlayer() {
+        mediaPlayer.pause()
+        playButton.setImageResource(R.drawable.play_button)
+        handler.removeCallbacks(createUpdateTimerTask())
+        playerState = STATE_PAUSED
+    }
+
+    private fun playbackControl() {
+        when (playerState) {
+            STATE_PLAYING -> {
+                pausePlayer()
+            }
+
+            STATE_PREPARED, STATE_PAUSED -> {
+                startPlayer()
+            }
+        }
+    }
+
+    private fun createUpdateTimerTask(): Runnable {
+        return object : Runnable {
+            override fun run() {
+                if (playerState == STATE_PLAYING) {
+                    playTime.text = SimpleDateFormat(
+                        "mm:ss",
+                        Locale.getDefault()
+                    ).format(mediaPlayer.currentPosition)
+                    handler.postDelayed(this, DELAY)
+                }
+            }
+        }
     }
 }
