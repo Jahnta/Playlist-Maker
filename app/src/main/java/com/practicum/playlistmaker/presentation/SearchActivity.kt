@@ -1,4 +1,4 @@
-package com.practicum.playlistmaker
+package com.practicum.playlistmaker.presentation
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,11 +8,14 @@ import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import android.view.inputmethod.EditorInfo
 import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
+import com.practicum.playlistmaker.R
+import com.practicum.playlistmaker.domain.models.Track
+import com.practicum.playlistmaker.data.dto.TrackSearchResponse
+import com.practicum.playlistmaker.data.network.ITunesApiService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -37,7 +40,7 @@ class SearchActivity : AppCompatActivity() {
             .baseUrl(itunesBaseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-    private val itunesService = retrofit.create(iTunesApi::class.java)
+    private val itunesService = retrofit.create(ITunesApiService::class.java)
 
     private lateinit var backButton: ImageView
     private lateinit var queryInput: EditText
@@ -227,11 +230,11 @@ class SearchActivity : AppCompatActivity() {
             placeholderLayout.visibility = View.GONE
             progressBar.visibility = View.VISIBLE
 
-            itunesService.search(queryInput.text.toString())
-                .enqueue(object : Callback<TrackResponse> {
+            itunesService.searchTrack(queryInput.text.toString())
+                .enqueue(object : Callback<TrackSearchResponse> {
                     override fun onResponse(
-                        call: Call<TrackResponse>,
-                        response: Response<TrackResponse>
+                        call: Call<TrackSearchResponse>,
+                        response: Response<TrackSearchResponse>
                     ) {
                         progressBar.visibility = View.GONE
                         if (response.code() == 200) {
@@ -252,7 +255,7 @@ class SearchActivity : AppCompatActivity() {
                         }
                     }
 
-                    override fun onFailure(call: Call<TrackResponse>, t: Throwable) {
+                    override fun onFailure(call: Call<TrackSearchResponse>, t: Throwable) {
                         progressBar.visibility = View.GONE
                         showMessage(getString(R.string.no_connection), t.message.toString())
                         lastQuery = queryInput.text.toString()
