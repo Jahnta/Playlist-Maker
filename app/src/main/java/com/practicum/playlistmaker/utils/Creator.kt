@@ -1,11 +1,11 @@
-package com.practicum.playlistmaker.creator
+package com.practicum.playlistmaker.utils
 
 import com.practicum.playlistmaker.data.MediaPlayerRepositoryImpl
 import com.practicum.playlistmaker.domain.impl.MediaPlayerInteractorImpl
 
 object Creator {
 
-    fun provideMediaPlayerRepository() = MediaPlayerRepositoryImpl()
+    private fun provideMediaPlayerRepository() = MediaPlayerRepositoryImpl()
 
     fun provideMediaPlayerInteractor() = MediaPlayerInteractorImpl(provideMediaPlayerRepository())
 }

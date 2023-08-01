@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.practicum.playlistmaker.R
+import com.practicum.playlistmaker.data.SearchHistory
 import com.practicum.playlistmaker.domain.models.Track
 import com.practicum.playlistmaker.data.dto.TrackSearchResponse
 import com.practicum.playlistmaker.data.network.ITunesApiService
@@ -220,7 +221,8 @@ class SearchActivity : AppCompatActivity() {
         handler.postDelayed(searchRunnable, SEARCH_DEBOUNCE_DELAY)
     }
 
-    private val searchRunnable = Runnable {
+    private
+    val searchRunnable = Runnable {
         getTracks()
     }
 
@@ -241,7 +243,20 @@ class SearchActivity : AppCompatActivity() {
                             tracks.clear()
                             if (response.body()?.results?.isNotEmpty() == true) {
                                 trackList.visibility = View.VISIBLE
-                                tracks.addAll(response.body()?.results!!)
+                                tracks.addAll(response.body()?.results!!.map {
+                                    Track(
+                                        it.trackId,
+                                        it.trackName,
+                                        it.artistName,
+                                        it.trackTimeMillis,
+                                        it.artworkUrl100,
+                                        it.collectionName,
+                                        it.country,
+                                        it.primaryGenreName,
+                                        it.releaseDate,
+                                        it.previewUrl
+                                    )
+                                })
                                 trackAdapter.notifyDataSetChanged()
                             }
                             if (tracks.isEmpty()) {
@@ -255,9 +270,15 @@ class SearchActivity : AppCompatActivity() {
                         }
                     }
 
-                    override fun onFailure(call: Call<TrackSearchResponse>, t: Throwable) {
+                    override fun onFailure(
+                        call: Call<TrackSearchResponse>,
+                        t: Throwable
+                    ) {
                         progressBar.visibility = View.GONE
-                        showMessage(getString(R.string.no_connection), t.message.toString())
+                        showMessage(
+                            getString(R.string.no_connection),
+                            t.message.toString()
+                        )
                         lastQuery = queryInput.text.toString()
                     }
                 })
@@ -278,7 +299,11 @@ class SearchActivity : AppCompatActivity() {
                 refreshButton.visibility = View.VISIBLE
             }
             if (additionalMessage.isNotEmpty()) {
-                Toast.makeText(applicationContext, additionalMessage, Toast.LENGTH_LONG)
+                Toast.makeText(
+                    applicationContext,
+                    additionalMessage,
+                    Toast.LENGTH_LONG
+                )
                     .show()
             }
         } else {

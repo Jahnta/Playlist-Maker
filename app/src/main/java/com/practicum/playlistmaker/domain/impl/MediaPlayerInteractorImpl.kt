@@ -3,12 +3,10 @@ package com.practicum.playlistmaker.domain.impl
 import android.media.MediaPlayer
 import android.os.Handler
 import android.os.Looper
-import com.practicum.playlistmaker.R
 import com.practicum.playlistmaker.domain.api.MediaPlayerInteractor
 import com.practicum.playlistmaker.domain.api.MediaPlayerRepository
 import com.practicum.playlistmaker.domain.models.PlayerStates
 import com.practicum.playlistmaker.domain.models.Track
-import com.practicum.playlistmaker.presentation.PlayerActivity
 
 class MediaPlayerInteractorImpl(repository: MediaPlayerRepository) : MediaPlayerInteractor {
 

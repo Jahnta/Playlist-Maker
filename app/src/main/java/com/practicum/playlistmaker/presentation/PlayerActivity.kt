@@ -1,10 +1,7 @@
 package com.practicum.playlistmaker.presentation
 
-import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
@@ -12,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.gson.Gson
 import com.practicum.playlistmaker.R
-import com.practicum.playlistmaker.creator.Creator
+import com.practicum.playlistmaker.utils.Creator
 import com.practicum.playlistmaker.domain.api.MediaPlayerInteractor
 import com.practicum.playlistmaker.domain.models.PlayerStates
 import com.practicum.playlistmaker.domain.models.Track
