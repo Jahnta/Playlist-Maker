@@ -1,8 +1,8 @@
-package com.practicum.playlistmaker.data
+package com.practicum.playlistmaker.data.search
 
 import android.content.SharedPreferences
 import com.google.gson.Gson
-import com.practicum.playlistmaker.domain.models.Track
+import com.practicum.playlistmaker.domain.search.model.Track
 
 const val SEARCHHISTORY_KEY = "key_for_searchHistory"
 

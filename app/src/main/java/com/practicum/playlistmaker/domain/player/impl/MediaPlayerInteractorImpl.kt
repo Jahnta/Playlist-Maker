@@ -1,12 +1,12 @@
-package com.practicum.playlistmaker.domain.impl
+package com.practicum.playlistmaker.domain.player.impl
 
 import android.media.MediaPlayer
 import android.os.Handler
 import android.os.Looper
-import com.practicum.playlistmaker.domain.api.MediaPlayerInteractor
-import com.practicum.playlistmaker.domain.api.MediaPlayerRepository
-import com.practicum.playlistmaker.domain.models.PlayerStates
-import com.practicum.playlistmaker.domain.models.Track
+import com.practicum.playlistmaker.domain.player.MediaPlayerInteractor
+import com.practicum.playlistmaker.data.player.MediaPlayerRepository
+import com.practicum.playlistmaker.domain.player.model.PlayerStates
+import com.practicum.playlistmaker.domain.search.model.Track
 
 class MediaPlayerInteractorImpl(repository: MediaPlayerRepository) : MediaPlayerInteractor {
 

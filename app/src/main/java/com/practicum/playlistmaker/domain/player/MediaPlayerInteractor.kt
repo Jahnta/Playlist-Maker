@@ -1,7 +1,7 @@
-package com.practicum.playlistmaker.domain.api
+package com.practicum.playlistmaker.domain.player
 
-import com.practicum.playlistmaker.domain.models.PlayerStates
-import com.practicum.playlistmaker.domain.models.Track
+import com.practicum.playlistmaker.domain.player.model.PlayerStates
+import com.practicum.playlistmaker.domain.search.model.Track
 
 interface MediaPlayerInteractor {
 

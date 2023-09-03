@@ -1,6 +1,6 @@
-package com.practicum.playlistmaker.data.dto
+package com.practicum.playlistmaker.domain.search.model
 
-data class TrackDto(
+data class Track(
     val trackId: String,
     val trackName: String,
     val artistName: String,
@@ -9,6 +9,7 @@ data class TrackDto(
     val collectionName: String,
     val country: String,
     val primaryGenreName: String,
-    val releaseDate: String,
-    val previewUrl: String,
+    val releaseDate: String?,
+    val previewUrl: String?,
 )
+

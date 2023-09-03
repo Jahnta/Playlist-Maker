@@ -1,5 +1,7 @@
 package com.practicum.playlistmaker.ui.player
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageButton
@@ -10,9 +12,9 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.gson.Gson
 import com.practicum.playlistmaker.R
 import com.practicum.playlistmaker.creator.Creator
-import com.practicum.playlistmaker.domain.api.MediaPlayerInteractor
-import com.practicum.playlistmaker.domain.models.PlayerStates
-import com.practicum.playlistmaker.domain.models.Track
+import com.practicum.playlistmaker.domain.player.MediaPlayerInteractor
+import com.practicum.playlistmaker.domain.player.model.PlayerStates
+import com.practicum.playlistmaker.domain.search.model.Track
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -20,6 +22,11 @@ class PlayerActivity : AppCompatActivity() {
 
     companion object {
         const val TRACK_DATA = "track_data"
+        fun newIntent(context: Context, track: Track): Intent {
+            return Intent(context, PlayerActivity::class.java).apply {
+                putExtra(TRACK_DATA, Gson().toJson(track))
+            }
+        }
     }
 
     private lateinit var backButton: ImageView
@@ -72,7 +79,7 @@ class PlayerActivity : AppCompatActivity() {
         artistName.text = track.artistName
         trackDuration.text = SimpleDateFormat("mm:ss", Locale.getDefault()).format(track.trackTimeMillis)
         trackAlbum.text = track.collectionName
-        trackYear.text = track.releaseDate.substring(0, 4)
+        trackYear.text = track.releaseDate?.substring(0, 4) ?: ""
         trackGenre.text = track.primaryGenreName
         trackCountry.text = track.country
 
