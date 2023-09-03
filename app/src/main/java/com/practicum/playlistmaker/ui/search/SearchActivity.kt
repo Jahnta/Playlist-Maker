@@ -1,4 +1,4 @@
-package com.practicum.playlistmaker.presentation
+package com.practicum.playlistmaker.ui.search
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +17,8 @@ import com.practicum.playlistmaker.data.SearchHistory
 import com.practicum.playlistmaker.domain.models.Track
 import com.practicum.playlistmaker.data.dto.TrackSearchResponse
 import com.practicum.playlistmaker.data.network.ITunesApiService
+import com.practicum.playlistmaker.ui.player.PlayerActivity
+import com.practicum.playlistmaker.ui.TrackAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -32,6 +34,7 @@ class SearchActivity : AppCompatActivity() {
         const val maxSearchHistorySize = 10
         const val CLICK_DEBOUNCE_DELAY = 1_000L
         const val SEARCH_DEBOUNCE_DELAY = 2_000L
+        const val PLAYLIST_MAKER_PREFERENCES = "playlist_maker_preferences"
     }
 
     private var savedText = ""
