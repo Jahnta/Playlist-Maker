@@ -5,14 +5,12 @@ import android.os.Looper
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.practicum.playlistmaker.domain.search.HistoryInteractor
 import com.practicum.playlistmaker.domain.search.model.SearchActivityState
 import com.practicum.playlistmaker.domain.search.SearchInteractor
 import com.practicum.playlistmaker.domain.search.model.Track
 
 class SearchViewModel(
-    private val searchInteractor: SearchInteractor,
-    private val historyInteractor: HistoryInteractor
+    private val searchInteractor: SearchInteractor
 ) : ViewModel() {
 
     companion object {
@@ -76,7 +74,7 @@ class SearchViewModel(
         _state.postValue(state)
     }
 
-    private fun getHistory() = historyInteractor.getAllTracks()
+    private fun getHistory() = searchInteractor.getAllTracks()
 
     fun clickDebounce(): Boolean {
         val current = isClickAllowed
@@ -88,11 +86,11 @@ class SearchViewModel(
     }
 
     fun saveTrack(track: Track) {
-        historyInteractor.saveTrack(track)
+        searchInteractor.saveTrack(track)
     }
 
     fun clearHistory() {
-        historyInteractor.clearHistory()
+        searchInteractor.clearHistory()
         _state.value = SearchActivityState.SearchHistory(
             emptyList()
         )

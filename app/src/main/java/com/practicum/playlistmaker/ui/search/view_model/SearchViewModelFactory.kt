@@ -9,8 +9,7 @@ class SearchViewModelFactory(private val context: Context) : ViewModelProvider.F
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(SearchViewModel::class.java)) {
             return SearchViewModel(
-                searchInteractor = Creator.provideSearchInteractor(context),
-                historyInteractor = Creator.provideHistoryInteractor(context)
+                searchInteractor = Creator.provideSearchInteractor(context)
             ) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")

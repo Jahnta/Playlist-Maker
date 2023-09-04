@@ -7,4 +7,11 @@ interface SearchInteractor {
     interface TracksConsumer {
         fun consume(foundTracks: List<Track>?, errorMessage: String?)
     }
+
+
+    fun saveTrack(track: Track)
+
+    fun getAllTracks(): List<Track>
+
+    fun clearHistory()
 }
