@@ -57,7 +57,6 @@ class PlayerViewModel(
 
     fun destroyPlayer() {
         interactor.releasePlayer()
-        updateTimer()
     }
 
     fun playbackControl() {
