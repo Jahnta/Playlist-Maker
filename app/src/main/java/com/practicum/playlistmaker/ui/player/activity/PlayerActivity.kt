@@ -62,8 +62,6 @@ class PlayerActivity : AppCompatActivity() {
         binding.trackGenre.text = track.primaryGenreName
         binding.trackCountry.text = track.country
 
-
-
         viewModel.playerState.observe(this) { state ->
             when (state) {
                 PlayerState.STATE_PLAYING -> startPlayer()
@@ -72,11 +70,9 @@ class PlayerActivity : AppCompatActivity() {
             }
         }
 
-
         viewModel.timeProgress.observe(this) {
             binding.playTime.text = it
         }
-
 
         binding.back.setOnClickListener { finish() }
         binding.playButton.setOnClickListener { viewModel.playbackControl() }
@@ -93,16 +89,10 @@ class PlayerActivity : AppCompatActivity() {
     }
 
     private fun startPlayer() {
-        binding.playButton.setOnClickListener {
-            viewModel.playbackControl()
-        }
         binding.playButton.setImageResource(R.drawable.pause_button)
     }
 
     private fun pausePlayer() {
-        binding.playButton.setOnClickListener {
-            viewModel.playbackControl()
-        }
         binding.playButton.setImageResource(R.drawable.play_button)
     }
 

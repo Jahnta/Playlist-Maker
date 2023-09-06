@@ -1,41 +1,13 @@
 package com.practicum.playlistmaker.ui.search
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.practicum.playlistmaker.R
 import com.practicum.playlistmaker.databinding.TrackViewBinding
 import com.practicum.playlistmaker.domain.search.model.Track
-import java.text.SimpleDateFormat
-import java.util.*
-import kotlin.collections.ArrayList
 
 class TrackAdapter(private val clickListener: ((Track) -> Unit)? = null) :
-    RecyclerView.Adapter<TrackAdapter.TrackViewHolder>() {
-
-    class TrackViewHolder(private val binding: TrackViewBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-
-        fun bind(model: Track) {
-            with(binding) {
-                trackName.text = model.trackName
-                artistName.text = model.artistName
-                trackTime.text =
-                    SimpleDateFormat("mm:ss", Locale.getDefault()).format(model.trackTimeMillis)
-                Glide.with(itemView)
-                    .load(model.artworkUrl100)
-                    .placeholder(R.drawable.placeholder)
-                    .centerCrop()
-                    .transform(RoundedCorners(8))
-                    .into(trackImage)
-            }
-        }
-    }
+    RecyclerView.Adapter<TrackViewHolder>() {
 
     var tracks = ArrayList<Track>()
 

@@ -1,12 +1,15 @@
-package com.practicum.playlistmaker.presentation
+package com.practicum.playlistmaker
 
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
 
-const val PLAYLIST_MAKER_PREFERENCES = "playlist_maker_preferences"
-const val THEME_KEY = "key_for_themeSwitcher"
+
 
 class App : Application() {
+    companion object {
+        const val PLAYLIST_MAKER_PREFERENCES = "playlist_maker_preferences"
+        const val THEME_KEY = "key_for_themeSwitcher"
+    }
 
     private var darkTheme = false
 

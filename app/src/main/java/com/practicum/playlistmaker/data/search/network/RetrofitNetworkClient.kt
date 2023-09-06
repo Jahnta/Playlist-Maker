@@ -3,8 +3,6 @@ package com.practicum.playlistmaker.data.search.network
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.os.Build
-import androidx.annotation.RequiresApi
 import com.practicum.playlistmaker.data.search.dto.Response
 import com.practicum.playlistmaker.data.search.dto.TrackSearchRequest
 import retrofit2.Retrofit
@@ -20,7 +18,6 @@ class RetrofitNetworkClient(private val context: Context) : NetworkClient {
         .build()
 
     private val iTunesService = retrofit.create(ITunesApiService::class.java)
-    @RequiresApi(Build.VERSION_CODES.M)
     override fun doRequest(dto: Any): Response {
         if (!isConnected()) {
             return Response().apply { resultCode = -1 }
@@ -34,7 +31,6 @@ class RetrofitNetworkClient(private val context: Context) : NetworkClient {
         return body.apply { resultCode = resp.code() }
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
     private fun isConnected(): Boolean {
         val connectivityManager = context.getSystemService(
             Context.CONNECTIVITY_SERVICE
