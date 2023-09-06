@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingBottom="28dp"
-        tools:context=".ui.player.PlayerActivity">
+        tools:context=".ui.player.activity.PlayerActivity">
 
         <ImageView
             android:id="@+id/back"
@@ -110,7 +110,7 @@
             app:layout_constraintTop_toBottomOf="@id/artistName" />
 
         <TextView
-            android:id="@+id/playTime"
+            android:id="@+id/elapsedTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -133,7 +133,7 @@
             android:textColor="@color/YP_Text_Gray"
             android:textSize="13sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/playTime" />
+            app:layout_constraintTop_toBottomOf="@id/elapsedTime" />
 
         <TextView
             android:id="@+id/trackDuration"

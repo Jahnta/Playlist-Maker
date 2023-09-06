@@ -16,6 +16,10 @@ class SettingsViewModel(
     val themeSettings: LiveData<Boolean>
         get() = _themeSettings
 
+    init {
+        loadThemeSettings()
+    }
+
     private fun loadThemeSettings() {
         _themeSettings.value = settingsInteractor.getThemeSettings().isDarkEnabled
     }
