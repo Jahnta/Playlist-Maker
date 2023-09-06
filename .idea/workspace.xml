@@ -9,13 +9,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="608ab414-df12-4437-b468-444deaae5601" name="Changes" comment="Экран &quot;Поиск&quot; переделан с использованием MVVM">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/practicum/playlistmaker/domain/player/model/PlayerInfo.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/practicum/playlistmaker/ui/search/TrackViewHolder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="608ab414-df12-4437-b468-444deaae5601" name="Changes" comment="Правки">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.keystream" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.keystream.len" afterDir="false" />
@@ -85,16 +80,16 @@
       <change beforePath="$PROJECT_DIR$/app/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab_i" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/kotlin/compileDebugKotlin/cacheable/last-build.bin" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/kotlin/compileDebugKotlin/cacheable/last-build.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/kotlin/compileDebugKotlin/local-state/build-history.bin" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/kotlin/compileDebugKotlin/local-state/build-history.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/practicum/playlistmaker/App.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/practicum/playlistmaker/App.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/practicum/playlistmaker/data/player/PlayerRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/practicum/playlistmaker/data/player/PlayerRepository.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/practicum/playlistmaker/data/player/impl/PlayerRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/practicum/playlistmaker/data/player/impl/PlayerRepositoryImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/practicum/playlistmaker/data/search/network/RetrofitNetworkClient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/practicum/playlistmaker/data/search/network/RetrofitNetworkClient.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/practicum/playlistmaker/domain/player/PlayerInteractor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/practicum/playlistmaker/domain/player/PlayerInteractor.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/practicum/playlistmaker/domain/player/PlayerStateObserver.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/practicum/playlistmaker/domain/player/PlayerInfoObserver.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/practicum/playlistmaker/domain/player/impl/PlayerInteractorImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/practicum/playlistmaker/domain/player/impl/PlayerInteractorImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/practicum/playlistmaker/domain/player/model/PlayerInfo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/practicum/playlistmaker/domain/player/model/PlayerInfo.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/practicum/playlistmaker/ui/player/activity/PlayerActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/practicum/playlistmaker/ui/player/activity/PlayerActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/practicum/playlistmaker/ui/player/view_model/PlayerViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/practicum/playlistmaker/ui/player/view_model/PlayerViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/practicum/playlistmaker/ui/search/TrackAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/practicum/playlistmaker/ui/search/TrackAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_player.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_player.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/track_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/track_view.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -374,7 +369,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693777733167</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Правки">
+      <created>1693990140872</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1693990140872</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -399,6 +401,7 @@
     <MESSAGE value="Исправлены отступы" />
     <MESSAGE value="Удалены гайдлайны. Добавлен ScrollView. Исправлены отступы и цвета" />
     <MESSAGE value="Экран &quot;Поиск&quot; переделан с использованием MVVM" />
-    <option name="LAST_COMMIT_MESSAGE" value="Экран &quot;Поиск&quot; переделан с использованием MVVM" />
+    <MESSAGE value="Правки" />
+    <option name="LAST_COMMIT_MESSAGE" value="Правки" />
   </component>
 </project>

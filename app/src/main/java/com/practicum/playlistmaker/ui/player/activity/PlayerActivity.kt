@@ -10,6 +10,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.gson.Gson
 import com.practicum.playlistmaker.R
 import com.practicum.playlistmaker.databinding.ActivityPlayerBinding
+import com.practicum.playlistmaker.domain.player.model.PlayerInfo
 import com.practicum.playlistmaker.domain.player.model.PlayerState
 import com.practicum.playlistmaker.domain.search.model.Track
 import com.practicum.playlistmaker.ui.player.view_model.PlayerViewModel
@@ -62,16 +63,13 @@ class PlayerActivity : AppCompatActivity() {
         binding.trackGenre.text = track.primaryGenreName
         binding.trackCountry.text = track.country
 
-        viewModel.playerState.observe(this) { state ->
-            when (state) {
+        viewModel.playerInfo.observe(this) {
+            when (it.playerState) {
                 PlayerState.STATE_PLAYING -> startPlayer()
                 PlayerState.STATE_PAUSED, PlayerState.STATE_PREPARED -> pausePlayer()
                 else -> {}
             }
-        }
-
-        viewModel.timeProgress.observe(this) {
-            binding.playTime.text = it
+            binding.elapsedTime.text = it.elapsedTime
         }
 
         binding.back.setOnClickListener { finish() }

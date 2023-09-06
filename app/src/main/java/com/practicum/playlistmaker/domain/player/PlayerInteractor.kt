@@ -9,6 +9,5 @@ interface PlayerInteractor {
     fun pausePlayer()
     fun releasePlayer()
     fun getCurrentTrackTime(): String
-    fun getPlayerState(observer: PlayerStateObserver)
-    fun getPlayerStateNew() : PlayerState
+    fun getPlayerInfo(observer: PlayerInfoObserver)
 }

@@ -2,7 +2,7 @@ package com.practicum.playlistmaker.domain.player.impl
 
 import com.practicum.playlistmaker.domain.player.PlayerInteractor
 import com.practicum.playlistmaker.data.player.PlayerRepository
-import com.practicum.playlistmaker.domain.player.PlayerStateObserver
+import com.practicum.playlistmaker.domain.player.PlayerInfoObserver
 import com.practicum.playlistmaker.domain.player.model.PlayerState
 import com.practicum.playlistmaker.domain.search.model.Track
 
@@ -27,11 +27,8 @@ class PlayerInteractorImpl(private val repository: PlayerRepository) : PlayerInt
         return repository.getCurrentTrackTime()
     }
 
-    override fun getPlayerState(observer: PlayerStateObserver){
-        return repository.getPlayerState(observer)
+    override fun getPlayerInfo(observer: PlayerInfoObserver){
+        return repository.getPlayerInfo(observer)
     }
 
-    override fun getPlayerStateNew(): PlayerState {
-        return repository.getPlayerStateNew()
-    }
 }

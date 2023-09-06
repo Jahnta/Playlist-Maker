@@ -3,45 +3,43 @@ package com.practicum.playlistmaker.data.player.impl
 import android.media.MediaPlayer
 import android.util.Log
 import com.practicum.playlistmaker.data.player.PlayerRepository
-import com.practicum.playlistmaker.domain.player.PlayerStateObserver
+import com.practicum.playlistmaker.domain.player.PlayerInfoObserver
+import com.practicum.playlistmaker.domain.player.model.PlayerInfo
 import com.practicum.playlistmaker.domain.player.model.PlayerState
 import com.practicum.playlistmaker.domain.search.model.Track
-import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.Locale
 
 class PlayerRepositoryImpl(track: Track) : PlayerRepository {
 
     private var mediaPlayer = MediaPlayer()
-    private var playerState: PlayerState = PlayerState.STATE_DEFAULT
-    private val observers = mutableListOf<PlayerStateObserver>()
+    private var playerInfo: PlayerInfo = PlayerInfo(PlayerState.STATE_DEFAULT,"00:00")
+    private val observers = mutableListOf<PlayerInfoObserver>()
 
     override fun preparePlayer(track: Track) {
         mediaPlayer.setDataSource(track.previewUrl)
         mediaPlayer.prepareAsync()
         mediaPlayer.setOnPreparedListener {
-            playerState = PlayerState.STATE_PREPARED
-            notifyPlayerStateChanged(playerState)
-            Log.d("AAA", "${playerState}")
+            playerInfo = PlayerInfo(PlayerState.STATE_PREPARED, "00:00")
+            notifyPlayerInfoChanged(playerInfo)
         }
         mediaPlayer.setOnCompletionListener {
-            playerState = PlayerState.STATE_PREPARED
-            notifyPlayerStateChanged(playerState)
-            Log.d("AAA", "${playerState}")
+            playerInfo = PlayerInfo(PlayerState.STATE_PREPARED, "00:00")
+            notifyPlayerInfoChanged(playerInfo)
         }
     }
 
     override fun startPlayer() {
         mediaPlayer.start()
-        playerState = PlayerState.STATE_PLAYING
-        notifyPlayerStateChanged(playerState)
+        playerInfo = PlayerInfo(PlayerState.STATE_PLAYING, getCurrentTrackTime())
+        notifyPlayerInfoChanged(playerInfo)
     }
 
     override fun pausePlayer() {
-        if (playerState == PlayerState.STATE_PLAYING) {
+        if (playerInfo.playerState == PlayerState.STATE_PLAYING) {
             mediaPlayer.pause()
-            playerState = PlayerState.STATE_PAUSED
-            notifyPlayerStateChanged(playerState)
+            playerInfo = PlayerInfo(PlayerState.STATE_PAUSED, getCurrentTrackTime())
+            notifyPlayerInfoChanged(playerInfo)
         }
     }
 
@@ -53,16 +51,13 @@ class PlayerRepositoryImpl(track: Track) : PlayerRepository {
         return SimpleDateFormat("mm:ss", Locale.getDefault()).format(mediaPlayer.currentPosition)
     }
 
-    override fun getPlayerState(observer: PlayerStateObserver) {
+    override fun getPlayerInfo(observer: PlayerInfoObserver) {
         observers.add(observer)
-        observer.onPlayerStateChanged(playerState)
+        observer.onPlayerInfoChanged(playerInfo)
     }
 
-    private fun notifyPlayerStateChanged(state: PlayerState) {
-        observers.forEach { it.onPlayerStateChanged(state) }
+    private fun notifyPlayerInfoChanged(playerInfo: PlayerInfo) {
+        observers.forEach { it.onPlayerInfoChanged(playerInfo) }
     }
 
-    override fun getPlayerStateNew() : PlayerState {
-        return playerState
-    }
 }

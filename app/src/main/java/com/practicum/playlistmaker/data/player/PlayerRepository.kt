@@ -1,6 +1,6 @@
 package com.practicum.playlistmaker.data.player
 
-import com.practicum.playlistmaker.domain.player.PlayerStateObserver
+import com.practicum.playlistmaker.domain.player.PlayerInfoObserver
 import com.practicum.playlistmaker.domain.player.model.PlayerState
 import com.practicum.playlistmaker.domain.search.model.Track
 
@@ -10,7 +10,6 @@ interface PlayerRepository {
     fun pausePlayer()
     fun releasePlayer()
     fun getCurrentTrackTime(): String
-    fun getPlayerState(observer: PlayerStateObserver)
-    fun getPlayerStateNew() : PlayerState
+    fun getPlayerInfo(observer: PlayerInfoObserver)
 
 }
