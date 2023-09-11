@@ -1,4 +1,4 @@
-package com.practicum.playlistmaker.creator
+package com.practicum.playlistmaker.utils
 
 sealed class Resource<T>(
     val data: T? = null,

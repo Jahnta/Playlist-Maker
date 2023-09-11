@@ -2,7 +2,7 @@ package com.practicum.playlistmaker.data.search.impl
 
 import android.content.Context
 import com.google.gson.Gson
-import com.practicum.playlistmaker.creator.Resource
+import com.practicum.playlistmaker.utils.Resource
 import com.practicum.playlistmaker.data.search.dto.TrackSearchRequest
 import com.practicum.playlistmaker.data.search.dto.TrackSearchResponse
 import com.practicum.playlistmaker.data.search.network.NetworkClient
@@ -19,6 +19,11 @@ class SearchRepositoryImpl(
         const val SEARCH_KEY = "search_key"
         const val TRACKLIST_SIZE = 10
     }
+
+    private val savedTracks = mutableListOf<Track>()
+    private val sharedPrefs = context.getSharedPreferences(PLAYLIST_MAKER_PREFERENCES,
+        Context.MODE_PRIVATE
+    )
     override fun searchTracks(expression: String): Resource<List<Track>> {
         val response = networkClient.doRequest(TrackSearchRequest(expression))
         return when (response.resultCode) {
@@ -49,11 +54,6 @@ class SearchRepositoryImpl(
             }
         }
     }
-
-    private val savedTracks = mutableListOf<Track>()
-    private val sharedPrefs = context.getSharedPreferences(PLAYLIST_MAKER_PREFERENCES,
-        Context.MODE_PRIVATE
-    )
     override fun saveTrack(track: Track) {
         if (savedTracks.contains(track)) {
             savedTracks.remove(track)

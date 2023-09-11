@@ -5,31 +5,18 @@ import android.os.Looper
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import com.practicum.playlistmaker.creator.Creator
 import com.practicum.playlistmaker.domain.player.PlayerInfoObserver
+import com.practicum.playlistmaker.domain.player.PlayerInteractor
 import com.practicum.playlistmaker.domain.player.model.PlayerInfo
 import com.practicum.playlistmaker.domain.player.model.PlayerState
-import com.practicum.playlistmaker.domain.search.model.Track
 
 class PlayerViewModel(
-    track: Track
+    private val interactor: PlayerInteractor,
 ) : ViewModel() {
     companion object {
         private const val DELAY = 500L
-
-        fun getViewModelFactory(track: Track): ViewModelProvider.Factory =
-            object : ViewModelProvider.Factory {
-                @Suppress("UNCHECKED_CAST")
-                override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                    return PlayerViewModel(
-                        track
-                    ) as T
-                }
-            }
     }
 
-    private val interactor = Creator.providePlayerInteractor(track)
     private val handler = Handler(Looper.getMainLooper())
     private val timerRunnable = Runnable { updateTimer() }
 
@@ -37,7 +24,6 @@ class PlayerViewModel(
     val playerInfo: LiveData<PlayerInfo> get() = _playerInfo
 
     init {
-        interactor.preparePlayer(track)
         interactor.getPlayerInfo(
             object : PlayerInfoObserver {
                 override fun onPlayerInfoChanged(playerInfo: PlayerInfo) {

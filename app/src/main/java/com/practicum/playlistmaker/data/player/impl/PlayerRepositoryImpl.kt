@@ -16,6 +16,10 @@ class PlayerRepositoryImpl(track: Track) : PlayerRepository {
     private var playerInfo: PlayerInfo = PlayerInfo(PlayerState.STATE_DEFAULT,"00:00")
     private val observers = mutableListOf<PlayerInfoObserver>()
 
+    init {
+        preparePlayer(track)
+    }
+
     override fun preparePlayer(track: Track) {
         mediaPlayer.setDataSource(track.previewUrl)
         mediaPlayer.prepareAsync()
