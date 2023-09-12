@@ -1,6 +1,7 @@
 package com.practicum.playlistmaker.di
 
 import android.content.Context
+import android.media.MediaPlayer
 import com.practicum.playlistmaker.data.player.PlayerRepository
 import com.practicum.playlistmaker.data.player.impl.PlayerRepositoryImpl
 import com.practicum.playlistmaker.data.search.network.ITunesApiService
@@ -34,6 +35,7 @@ val dataModule = module {
     single<NetworkClient> { RetrofitNetworkClient(get(), androidContext()) }
     single<ExternalNavigator> { ExternalNavigatorImpl(androidContext()) }
     single<ContentProvider> { ContentProviderImpl(androidContext()) }
+    single { MediaPlayer() }
 
-    factory<PlayerRepository> { (track: Track) -> PlayerRepositoryImpl(track) }
+    factory<PlayerRepository> { (track: Track) -> PlayerRepositoryImpl(track, get()) }
 }
