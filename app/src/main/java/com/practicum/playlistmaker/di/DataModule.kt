@@ -35,7 +35,7 @@ val dataModule = module {
     single<NetworkClient> { RetrofitNetworkClient(get(), androidContext()) }
     single<ExternalNavigator> { ExternalNavigatorImpl(androidContext()) }
     single<ContentProvider> { ContentProviderImpl(androidContext()) }
-    single { MediaPlayer() }
+    factory { MediaPlayer() }
 
     factory<PlayerRepository> { (track: Track) -> PlayerRepositoryImpl(track, get()) }
 }
