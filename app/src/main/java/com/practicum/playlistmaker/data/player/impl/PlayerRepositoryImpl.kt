@@ -10,11 +10,17 @@ import com.practicum.playlistmaker.domain.search.model.Track
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class PlayerRepositoryImpl(track: Track) : PlayerRepository {
+class PlayerRepositoryImpl(
+    track: Track,
+    private val mediaPlayer: MediaPlayer
+) : PlayerRepository {
 
-    private var mediaPlayer = MediaPlayer()
     private var playerInfo: PlayerInfo = PlayerInfo(PlayerState.STATE_DEFAULT,"00:00")
     private val observers = mutableListOf<PlayerInfoObserver>()
+
+    init {
+        preparePlayer(track)
+    }
 
     override fun preparePlayer(track: Track) {
         mediaPlayer.setDataSource(track.previewUrl)
