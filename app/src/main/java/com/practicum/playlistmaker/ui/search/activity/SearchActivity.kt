@@ -51,19 +51,15 @@ class SearchActivity : AppCompatActivity() {
             }
         }
 
-
         binding.trackList.layoutManager = LinearLayoutManager(this)
         trackAdapter.tracks = tracks
         binding.trackList.adapter = trackAdapter
-
 
         binding.searchHistoryList.layoutManager = LinearLayoutManager(this)
         searchHistoryAdapter.tracks = searchHistoryTracks
         binding.searchHistoryList.adapter = searchHistoryAdapter
 
-
         viewModel.showHistory()
-
 
         binding.queryInput.setText(viewModel.savedSearchRequest)
         binding.queryInput.setOnFocusChangeListener { _, hasFocus ->
@@ -102,8 +98,6 @@ class SearchActivity : AppCompatActivity() {
             return@setOnEditorActionListener false
         }
 
-
-
         binding.clearIcon.setOnClickListener {
             viewModel.stopSearch()
             binding.queryInput.setText("")
@@ -118,8 +112,6 @@ class SearchActivity : AppCompatActivity() {
             viewModel.showHistory()
         }
 
-
-
         binding.refreshButton.setOnClickListener {
             val searchRequest = binding.queryInput.text.toString()
             if (searchRequest.isNotBlank()) {
@@ -129,9 +121,11 @@ class SearchActivity : AppCompatActivity() {
         binding.back.setOnClickListener {
             finish()
         }
+
         if (searchHistoryTracks.isNotEmpty()) {
             binding.searchHistoryLayout.visibility = View.VISIBLE
         }
+
         binding.clearHistoryButton.setOnClickListener {
             viewModel.clearHistory()
             binding.searchHistoryLayout.visibility = View.GONE
