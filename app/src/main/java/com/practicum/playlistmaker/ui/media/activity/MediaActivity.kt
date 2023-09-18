@@ -15,9 +15,6 @@ class MediaActivity : AppCompatActivity() {
 
     private lateinit var tabMediator: TabLayoutMediator
 
-    private val favouritesViewModel: MediaFavouritesViewModel by viewModel()
-    private val playlistsViewModel: MediaPlaylistsViewModel by viewModel()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMediaBinding.inflate(layoutInflater)

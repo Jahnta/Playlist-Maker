@@ -6,18 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.practicum.playlistmaker.databinding.FragmentFavouritesBinding
+import com.practicum.playlistmaker.ui.media.view_model.MediaFavouritesViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MediaFavouritesFragment : Fragment() {
 
-    companion object {
-
-        private const val TEXT_KEY = "text_key"
-        fun newInstance(text: String) = MediaFavouritesFragment().apply {
-            arguments = Bundle().apply {
-                putString(TEXT_KEY, text)
-            }
-        }
-    }
+    private val favouritesViewModel: MediaFavouritesViewModel by viewModel()
 
     private lateinit var binding: FragmentFavouritesBinding
 
@@ -33,5 +27,15 @@ class MediaFavouritesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.placeholderMessage.text = requireArguments().getString(TEXT_KEY)
+    }
+
+    companion object {
+
+        private const val TEXT_KEY = "text_key"
+        fun newInstance(text: String) = MediaFavouritesFragment().apply {
+            arguments = Bundle().apply {
+                putString(TEXT_KEY, text)
+            }
+        }
     }
 }
