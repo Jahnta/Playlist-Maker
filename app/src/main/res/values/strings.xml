@@ -29,4 +29,5 @@
     <string name="trackYearText">Год</string>
     <string name="trackGenreText">Жанр</string>
     <string name="trackCountryText">Страна</string>
+    <string name="createPlaylist">Новый плейлист</string>
 </resources>
