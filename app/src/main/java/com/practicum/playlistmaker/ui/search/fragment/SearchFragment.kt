@@ -1,15 +1,19 @@
-package com.practicum.playlistmaker.ui.search.activity
+package com.practicum.playlistmaker.ui.search.fragment
 
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.practicum.playlistmaker.R
-import com.practicum.playlistmaker.databinding.ActivitySearchBinding
+import com.practicum.playlistmaker.databinding.FragmentSearchBinding
 import com.practicum.playlistmaker.domain.search.model.SearchActivityState
 import com.practicum.playlistmaker.domain.search.model.Track
 import com.practicum.playlistmaker.ui.player.activity.PlayerActivity
@@ -17,10 +21,9 @@ import com.practicum.playlistmaker.ui.search.TrackAdapter
 import com.practicum.playlistmaker.ui.search.view_model.SearchViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+class SearchFragment : Fragment() {
 
-class SearchActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivitySearchBinding
+    private lateinit var binding: FragmentSearchBinding
     private val viewModel : SearchViewModel by viewModel()
 
     private val tracks = ArrayList<Track>()
@@ -29,33 +32,39 @@ class SearchActivity : AppCompatActivity() {
     private lateinit var trackAdapter: TrackAdapter
     private lateinit var searchHistoryAdapter: TrackAdapter
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentSearchBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivitySearchBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         trackAdapter = TrackAdapter {
             if (viewModel.clickDebounce()) {
                 viewModel.saveTrack(it)
-                PlayerActivity.newIntent(this, it).apply {
+                PlayerActivity.newIntent(requireContext(), it).apply {
                     startActivity(this)
                 }
             }
         }
         searchHistoryAdapter = TrackAdapter {
             if (viewModel.clickDebounce()) {
-                PlayerActivity.newIntent(this, it).apply {
+                PlayerActivity.newIntent(requireContext(), it).apply {
                     startActivity(this)
                 }
             }
         }
 
-        binding.trackList.layoutManager = LinearLayoutManager(this)
+        binding.trackList.layoutManager = LinearLayoutManager(requireContext())
         trackAdapter.tracks = tracks
         binding.trackList.adapter = trackAdapter
 
-        binding.searchHistoryList.layoutManager = LinearLayoutManager(this)
+        binding.searchHistoryList.layoutManager = LinearLayoutManager(requireContext())
         searchHistoryAdapter.tracks = searchHistoryTracks
         binding.searchHistoryList.adapter = searchHistoryAdapter
 
@@ -102,7 +111,7 @@ class SearchActivity : AppCompatActivity() {
             viewModel.stopSearch()
             binding.queryInput.setText("")
             viewModel.savedSearchRequest = ""
-            val keyboard = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+            val keyboard = requireActivity().getSystemService(AppCompatActivity.INPUT_METHOD_SERVICE) as InputMethodManager
             keyboard.hideSoftInputFromWindow(
                 binding.queryInput.windowToken, 0
             )
@@ -118,9 +127,6 @@ class SearchActivity : AppCompatActivity() {
                 viewModel.searchRequest(searchRequest)
             }
         }
-        binding.back.setOnClickListener {
-            finish()
-        }
 
         if (searchHistoryTracks.isNotEmpty()) {
             binding.searchHistoryLayout.visibility = View.VISIBLE
@@ -134,7 +140,6 @@ class SearchActivity : AppCompatActivity() {
         viewModel.state.observe(this) {
             renderState(it)
         }
-
     }
 
     private fun renderState(state: SearchActivityState) {
@@ -205,5 +210,6 @@ class SearchActivity : AppCompatActivity() {
             View.VISIBLE
         }
     }
+
 
 }

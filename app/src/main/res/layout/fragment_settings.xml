@@ -6,15 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/background_color_primary"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ui.settings.fragment.SettingsFragment">
 
     <LinearLayout
         style="@style/header_layout"
         android:layout_marginBottom="@dimen/margin_24">
-
-        <ImageView
-            android:id="@+id/back"
-            style="@style/header_back_button" />
 
         <TextView
             style="@style/header_text"
