@@ -10,6 +10,8 @@ import com.practicum.playlistmaker.domain.search.model.SearchFragmentState
 import com.practicum.playlistmaker.domain.search.SearchInteractor
 import com.practicum.playlistmaker.domain.search.model.Track
 import com.practicum.playlistmaker.utils.debounce
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class SearchViewModel(
     private val searchInteractor: SearchInteractor
@@ -52,28 +54,35 @@ class SearchViewModel(
         if (newSearchText.isNotEmpty()) {
             renderState(SearchFragmentState.Loading)
 
-            searchInteractor.searchTracks(newSearchText, object : SearchInteractor.TracksConsumer {
-                override fun consume(foundTracks: List<Track>?, errorMessage: String?) {
-                    val tracks = mutableListOf<Track>()
-                    if (foundTracks != null) {
-                        tracks.addAll(foundTracks)
+            viewModelScope.launch {
+                searchInteractor
+                    .searchTracks(newSearchText)
+                    .collect { pair ->
+                        processResult(pair.first, pair.second)
+
                     }
+            }
+        }
+    }
 
-                    when {
-                        errorMessage != null -> {
-                            renderState(SearchFragmentState.ConnectionError)
-                        }
+    private fun processResult(foundTracks: List<Track>?, errorMessage: String?) {
+        val tracks = mutableListOf<Track>()
+        if (foundTracks != null) {
+            tracks.addAll(foundTracks)
+        }
 
-                        tracks.isEmpty() -> {
-                            renderState(SearchFragmentState.Empty)
-                        }
+        when {
+            errorMessage != null -> {
+                renderState(SearchFragmentState.ConnectionError)
+            }
 
-                        else -> {
-                            renderState(SearchFragmentState.Content(trackList = tracks))
-                        }
-                    }
-                }
-            })
+            tracks.isEmpty() -> {
+                renderState(SearchFragmentState.Empty)
+            }
+
+            else -> {
+                renderState(SearchFragmentState.Content(trackList = tracks))
+            }
         }
     }
 
