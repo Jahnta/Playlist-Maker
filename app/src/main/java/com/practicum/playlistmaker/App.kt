@@ -14,7 +14,7 @@ import org.koin.core.context.startKoin
 class App : Application() {
     companion object {
         const val PLAYLIST_MAKER_PREFERENCES = "playlist_maker_preferences"
-        const val THEME_KEY = "key_for_themeSwitcher"
+        const val THEME_KEY = "theme_key"
     }
 
     private var darkTheme = false

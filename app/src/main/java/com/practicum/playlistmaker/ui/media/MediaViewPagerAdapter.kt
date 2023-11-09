@@ -7,8 +7,8 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.practicum.playlistmaker.ui.media.fragment.MediaFavouritesFragment
 import com.practicum.playlistmaker.ui.media.fragment.MediaPlaylistsFragment
 
-class MediaViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
-    FragmentStateAdapter(fragmentManager, lifecycle) {
+class MediaViewPagerAdapter(parentFragment: Fragment) :
+    FragmentStateAdapter(parentFragment) {
     override fun getItemCount(): Int {
         return 2
     }
