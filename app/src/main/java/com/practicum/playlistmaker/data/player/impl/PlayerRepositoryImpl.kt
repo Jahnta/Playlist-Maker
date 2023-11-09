@@ -7,6 +7,7 @@ import com.practicum.playlistmaker.domain.player.PlayerInfoObserver
 import com.practicum.playlistmaker.domain.player.model.PlayerInfo
 import com.practicum.playlistmaker.domain.player.model.PlayerState
 import com.practicum.playlistmaker.domain.search.model.Track
+import kotlinx.coroutines.Job
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -17,6 +18,8 @@ class PlayerRepositoryImpl(
 
     private var playerInfo: PlayerInfo = PlayerInfo(PlayerState.STATE_DEFAULT,"00:00")
     private val observers = mutableListOf<PlayerInfoObserver>()
+
+    private var timerJob: Job? = null
 
     init {
         preparePlayer(track)

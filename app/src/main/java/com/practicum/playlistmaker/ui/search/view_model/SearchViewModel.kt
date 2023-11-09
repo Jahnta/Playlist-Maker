@@ -5,9 +5,11 @@ import android.os.Looper
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.practicum.playlistmaker.domain.search.model.SearchActivityState
+import androidx.lifecycle.viewModelScope
+import com.practicum.playlistmaker.domain.search.model.SearchFragmentState
 import com.practicum.playlistmaker.domain.search.SearchInteractor
 import com.practicum.playlistmaker.domain.search.model.Track
+import com.practicum.playlistmaker.utils.debounce
 
 class SearchViewModel(
     private val searchInteractor: SearchInteractor
@@ -15,7 +17,6 @@ class SearchViewModel(
 
     companion object {
         private const val SEARCH_DEBOUNCE_DELAY = 2000L
-        private const val CLICK_DEBOUNCE_DELAY = 500L
     }
 
     private val handler = Handler(Looper.getMainLooper())
@@ -23,27 +24,33 @@ class SearchViewModel(
 
     private var latestSearchText: String = ""
 
-    private var isClickAllowed = true
 
-    private val _state = MutableLiveData<SearchActivityState>()
-    val state: LiveData<SearchActivityState>
+    private val _state = MutableLiveData<SearchFragmentState>()
+    val state: LiveData<SearchFragmentState>
         get() = _state
 
     var savedSearchRequest = ""
 
+    private val searchTextDebounce = debounce<String>(
+        SEARCH_DEBOUNCE_DELAY,
+        viewModelScope,
+        true) { text ->
+        searchRequest(text)
+    }
+
+
     fun searchDebounce(searchText: String) {
         if (searchText.isBlank()) {
-            _state.value = SearchActivityState.SearchHistory(getHistory())
+            _state.value = SearchFragmentState.SearchHistory(getHistory())
         } else {
             this.latestSearchText = searchText
-            handler.removeCallbacks(searchRunnable)
-            handler.postDelayed(searchRunnable, SEARCH_DEBOUNCE_DELAY)
+            searchTextDebounce(searchText)
         }
     }
 
     fun searchRequest(newSearchText: String) {
         if (newSearchText.isNotEmpty()) {
-            renderState(SearchActivityState.Loading)
+            renderState(SearchFragmentState.Loading)
 
             searchInteractor.searchTracks(newSearchText, object : SearchInteractor.TracksConsumer {
                 override fun consume(foundTracks: List<Track>?, errorMessage: String?) {
@@ -54,15 +61,15 @@ class SearchViewModel(
 
                     when {
                         errorMessage != null -> {
-                            renderState(SearchActivityState.ConnectionError)
+                            renderState(SearchFragmentState.ConnectionError)
                         }
 
                         tracks.isEmpty() -> {
-                            renderState(SearchActivityState.Empty)
+                            renderState(SearchFragmentState.Empty)
                         }
 
                         else -> {
-                            renderState(SearchActivityState.Content(trackList = tracks))
+                            renderState(SearchFragmentState.Content(trackList = tracks))
                         }
                     }
                 }
@@ -70,20 +77,12 @@ class SearchViewModel(
         }
     }
 
-    private fun renderState(state: SearchActivityState) {
+    private fun renderState(state: SearchFragmentState) {
         _state.postValue(state)
     }
 
     private fun getHistory() = searchInteractor.getAllTracks()
 
-    fun clickDebounce(): Boolean {
-        val current = isClickAllowed
-        if (isClickAllowed) {
-            isClickAllowed = false
-            handler.postDelayed({ isClickAllowed = true }, CLICK_DEBOUNCE_DELAY)
-        }
-        return current
-    }
 
     fun saveTrack(track: Track) {
         searchInteractor.saveTrack(track)
@@ -91,13 +90,13 @@ class SearchViewModel(
 
     fun clearHistory() {
         searchInteractor.clearHistory()
-        _state.value = SearchActivityState.SearchHistory(
+        _state.value = SearchFragmentState.SearchHistory(
             emptyList()
         )
     }
 
     fun showHistory() {
-        _state.value = SearchActivityState.SearchHistory(
+        _state.value = SearchFragmentState.SearchHistory(
             getHistory()
         )
     }
