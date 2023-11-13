@@ -7,7 +7,6 @@ import com.practicum.playlistmaker.domain.player.PlayerInfoObserver
 import com.practicum.playlistmaker.domain.player.model.PlayerInfo
 import com.practicum.playlistmaker.domain.player.model.PlayerState
 import com.practicum.playlistmaker.domain.search.model.Track
-import kotlinx.coroutines.Job
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -19,8 +18,6 @@ class PlayerRepositoryImpl(
     private var playerInfo: PlayerInfo = PlayerInfo(PlayerState.STATE_DEFAULT,"00:00")
     private val observers = mutableListOf<PlayerInfoObserver>()
 
-    private var timerJob: Job? = null
-
     init {
         preparePlayer(track)
     }
@@ -30,10 +27,12 @@ class PlayerRepositoryImpl(
         mediaPlayer.prepareAsync()
         mediaPlayer.setOnPreparedListener {
             playerInfo = PlayerInfo(PlayerState.STATE_PREPARED, "00:00")
+            Log.d("PLAYER", "${playerInfo.playerState} ${playerInfo.elapsedTime}")
             notifyPlayerInfoChanged(playerInfo)
         }
         mediaPlayer.setOnCompletionListener {
             playerInfo = PlayerInfo(PlayerState.STATE_PREPARED, "00:00")
+            Log.d("PLAYER", "${playerInfo.playerState} ${playerInfo.elapsedTime}")
             notifyPlayerInfoChanged(playerInfo)
         }
     }
@@ -41,6 +40,7 @@ class PlayerRepositoryImpl(
     override fun startPlayer() {
         mediaPlayer.start()
         playerInfo = PlayerInfo(PlayerState.STATE_PLAYING, getCurrentTrackTime())
+        Log.d("PLAYER", "${playerInfo.playerState} ${playerInfo.elapsedTime}")
         notifyPlayerInfoChanged(playerInfo)
     }
 
@@ -48,6 +48,7 @@ class PlayerRepositoryImpl(
         if (playerInfo.playerState == PlayerState.STATE_PLAYING) {
             mediaPlayer.pause()
             playerInfo = PlayerInfo(PlayerState.STATE_PAUSED, getCurrentTrackTime())
+            Log.d("PLAYER", "${playerInfo.playerState} ${playerInfo.elapsedTime}")
             notifyPlayerInfoChanged(playerInfo)
         }
     }

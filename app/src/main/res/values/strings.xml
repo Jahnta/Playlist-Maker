@@ -30,6 +30,8 @@
     <string name="trackGenreText">Жанр</string>
     <string name="trackCountryText">Страна</string>
     <string name="createPlaylist">Новый плейлист</string>
+    <string name="noConnectionError">Проверьте подключение к интернету</string>
+    <string name="serverError">Ошибка сервера</string>
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

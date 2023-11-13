@@ -2,6 +2,7 @@ package com.practicum.playlistmaker.data.search.impl
 
 import android.content.Context
 import com.google.gson.Gson
+import com.practicum.playlistmaker.R
 import com.practicum.playlistmaker.utils.Resource
 import com.practicum.playlistmaker.data.search.dto.TrackSearchRequest
 import com.practicum.playlistmaker.data.search.dto.TrackSearchResponse
@@ -26,11 +27,12 @@ class SearchRepositoryImpl(
     private val sharedPrefs = context.getSharedPreferences(PLAYLIST_MAKER_PREFERENCES,
         Context.MODE_PRIVATE
     )
+    private val resources = context.resources
     override fun searchTracks(expression: String): Flow<Resource<List<Track>>> = flow {
         val response = networkClient.doRequest(TrackSearchRequest(expression))
         when (response.resultCode) {
             -1 -> {
-                emit(Resource.Error(message = "Проверьте подключение к интернету"))
+                emit(Resource.Error(message = resources.getString(R.string.noConnectionError)))
             }
             200 -> {
                 with(response as TrackSearchResponse) {
@@ -53,7 +55,7 @@ class SearchRepositoryImpl(
             }
 
             else -> {
-                emit(Resource.Error(message = "Ошибка сервера"))
+                emit(Resource.Error(message = resources.getString(R.string.serverError)))
             }
         }
     }

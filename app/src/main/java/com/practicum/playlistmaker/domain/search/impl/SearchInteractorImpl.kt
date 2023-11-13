@@ -6,7 +6,6 @@ import com.practicum.playlistmaker.domain.search.SearchInteractor
 import com.practicum.playlistmaker.domain.search.model.Track
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import java.util.concurrent.Executors
 
 class SearchInteractorImpl(
     private val repository: SearchRepository
