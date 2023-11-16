@@ -1,24 +1,26 @@
 package com.practicum.playlistmaker.ui.player.view_model
 
-import android.os.Handler
-import android.os.Looper
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.practicum.playlistmaker.domain.player.PlayerInfoObserver
 import com.practicum.playlistmaker.domain.player.PlayerInteractor
 import com.practicum.playlistmaker.domain.player.model.PlayerInfo
 import com.practicum.playlistmaker.domain.player.model.PlayerState
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class PlayerViewModel(
     private val interactor: PlayerInteractor,
 ) : ViewModel() {
     companion object {
-        private const val DELAY = 500L
+        private const val DELAY = 300L
     }
 
-    private val handler = Handler(Looper.getMainLooper())
-    private val timerRunnable = Runnable { updateTimer() }
+    private var timerJob: Job? = null
 
     private val _playerInfo = MutableLiveData(PlayerInfo(PlayerState.STATE_DEFAULT, "00:00"))
     val playerInfo: LiveData<PlayerInfo> get() = _playerInfo
@@ -43,6 +45,7 @@ class PlayerViewModel(
 
     fun destroyPlayer() {
         interactor.releasePlayer()
+        timerJob = null
     }
 
     fun playbackControl() {
@@ -55,20 +58,25 @@ class PlayerViewModel(
     }
 
     private fun updateTimer() {
+        timerJob?.cancel()
         when (playerInfo.value?.playerState) {
             PlayerState.STATE_PLAYING -> {
-                _playerInfo.value = PlayerInfo(PlayerState.STATE_PLAYING, interactor.getCurrentTrackTime())
-                handler.postDelayed(timerRunnable, DELAY)
+                timerJob = viewModelScope.launch {
+                    while (playerInfo.value!!.playerState == PlayerState.STATE_PLAYING) {
+                        _playerInfo.value =
+                            PlayerInfo(PlayerState.STATE_PLAYING, interactor.getCurrentTrackTime())
+                        delay(DELAY)
+                    }
+                }
             }
 
             PlayerState.STATE_PAUSED -> {
-                _playerInfo.value = PlayerInfo(PlayerState.STATE_PAUSED, interactor.getCurrentTrackTime())
-                handler.removeCallbacks(timerRunnable)
+                timerJob?.cancel()
             }
 
             else -> {
-                handler.removeCallbacks(timerRunnable)
-                _playerInfo.value = PlayerInfo(PlayerState.STATE_PREPARED, interactor.getCurrentTrackTime())
+                _playerInfo.value =
+                    PlayerInfo(PlayerState.STATE_PLAYING, interactor.getCurrentTrackTime())
             }
         }
     }

@@ -2,12 +2,15 @@ package com.practicum.playlistmaker.data.search.impl
 
 import android.content.Context
 import com.google.gson.Gson
+import com.practicum.playlistmaker.R
 import com.practicum.playlistmaker.utils.Resource
 import com.practicum.playlistmaker.data.search.dto.TrackSearchRequest
 import com.practicum.playlistmaker.data.search.dto.TrackSearchResponse
 import com.practicum.playlistmaker.data.search.network.NetworkClient
 import com.practicum.playlistmaker.data.search.SearchRepository
 import com.practicum.playlistmaker.domain.search.model.Track
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 
 class SearchRepositoryImpl(
     context: Context,
@@ -24,16 +27,16 @@ class SearchRepositoryImpl(
     private val sharedPrefs = context.getSharedPreferences(PLAYLIST_MAKER_PREFERENCES,
         Context.MODE_PRIVATE
     )
-    override fun searchTracks(expression: String): Resource<List<Track>> {
+    private val resources = context.resources
+    override fun searchTracks(expression: String): Flow<Resource<List<Track>>> = flow {
         val response = networkClient.doRequest(TrackSearchRequest(expression))
-        return when (response.resultCode) {
+        when (response.resultCode) {
             -1 -> {
-                Resource.Error(message = "Проверьте подключение к интернету")
+                emit(Resource.Error(message = resources.getString(R.string.noConnectionError)))
             }
-
             200 -> {
-                Resource.Success(
-                    data = (response as TrackSearchResponse).results.map {
+                with(response as TrackSearchResponse) {
+                    val data = results.map {
                         Track(
                             it.trackId,
                             it.trackName,
@@ -46,11 +49,13 @@ class SearchRepositoryImpl(
                             it.releaseDate,
                             it.previewUrl
                         )
-                    })
+                    }
+                    emit(Resource.Success(data))
+                }
             }
 
             else -> {
-                Resource.Error(message = "Ошибка сервера")
+                emit(Resource.Error(message = resources.getString(R.string.serverError)))
             }
         }
     }

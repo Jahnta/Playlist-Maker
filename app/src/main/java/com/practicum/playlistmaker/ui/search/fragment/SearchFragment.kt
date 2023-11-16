@@ -9,19 +9,24 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.practicum.playlistmaker.R
 import com.practicum.playlistmaker.databinding.FragmentSearchBinding
-import com.practicum.playlistmaker.domain.search.model.SearchActivityState
+import com.practicum.playlistmaker.domain.search.model.SearchFragmentState
 import com.practicum.playlistmaker.domain.search.model.Track
 import com.practicum.playlistmaker.ui.player.activity.PlayerActivity
 import com.practicum.playlistmaker.ui.search.TrackAdapter
 import com.practicum.playlistmaker.ui.search.view_model.SearchViewModel
+import com.practicum.playlistmaker.utils.debounce
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFragment : Fragment() {
+
+    companion object {
+        private const val CLICK_DEBOUNCE_DELAY = 500L
+    }
 
     private lateinit var binding: FragmentSearchBinding
     private val viewModel : SearchViewModel by viewModel()
@@ -31,6 +36,8 @@ class SearchFragment : Fragment() {
 
     private lateinit var trackAdapter: TrackAdapter
     private lateinit var searchHistoryAdapter: TrackAdapter
+
+    private lateinit var onTrackClickDebounce: (Track) -> Unit
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,20 +51,21 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        trackAdapter = TrackAdapter {
-            if (viewModel.clickDebounce()) {
-                viewModel.saveTrack(it)
-                PlayerActivity.newIntent(requireContext(), it).apply {
+        onTrackClickDebounce = debounce<Track>(
+            CLICK_DEBOUNCE_DELAY,
+            viewLifecycleOwner.lifecycleScope,
+            false) { track ->
+                viewModel.saveTrack(track)
+                PlayerActivity.newIntent(requireContext(), track).apply {
                     startActivity(this)
                 }
-            }
+        }
+
+        trackAdapter = TrackAdapter {
+            onTrackClickDebounce(it)
         }
         searchHistoryAdapter = TrackAdapter {
-            if (viewModel.clickDebounce()) {
-                PlayerActivity.newIntent(requireContext(), it).apply {
-                    startActivity(this)
-                }
-            }
+            onTrackClickDebounce(it)
         }
 
         binding.trackList.layoutManager = LinearLayoutManager(requireContext())
@@ -142,13 +150,13 @@ class SearchFragment : Fragment() {
         }
     }
 
-    private fun renderState(state: SearchActivityState) {
+    private fun renderState(state: SearchFragmentState) {
         when (state) {
-            is SearchActivityState.SearchHistory -> showHistory(state.trackList)
-            is SearchActivityState.Content -> showFoundTracks(state.trackList)
-            is SearchActivityState.Loading -> showLoading()
-            is SearchActivityState.Empty -> showEmpty(getString(R.string.no_data))
-            is SearchActivityState.ConnectionError -> showError(getString(R.string.no_connection))
+            is SearchFragmentState.SearchHistory -> showHistory(state.trackList)
+            is SearchFragmentState.Content -> showFoundTracks(state.trackList)
+            is SearchFragmentState.Loading -> showLoading()
+            is SearchFragmentState.Empty -> showEmpty(getString(R.string.no_data))
+            is SearchFragmentState.ConnectionError -> showError(getString(R.string.no_connection))
         }
     }
 

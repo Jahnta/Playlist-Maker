@@ -27,10 +27,12 @@ class PlayerRepositoryImpl(
         mediaPlayer.prepareAsync()
         mediaPlayer.setOnPreparedListener {
             playerInfo = PlayerInfo(PlayerState.STATE_PREPARED, "00:00")
+            Log.d("PLAYER", "${playerInfo.playerState} ${playerInfo.elapsedTime}")
             notifyPlayerInfoChanged(playerInfo)
         }
         mediaPlayer.setOnCompletionListener {
             playerInfo = PlayerInfo(PlayerState.STATE_PREPARED, "00:00")
+            Log.d("PLAYER", "${playerInfo.playerState} ${playerInfo.elapsedTime}")
             notifyPlayerInfoChanged(playerInfo)
         }
     }
@@ -38,6 +40,7 @@ class PlayerRepositoryImpl(
     override fun startPlayer() {
         mediaPlayer.start()
         playerInfo = PlayerInfo(PlayerState.STATE_PLAYING, getCurrentTrackTime())
+        Log.d("PLAYER", "${playerInfo.playerState} ${playerInfo.elapsedTime}")
         notifyPlayerInfoChanged(playerInfo)
     }
 
@@ -45,6 +48,7 @@ class PlayerRepositoryImpl(
         if (playerInfo.playerState == PlayerState.STATE_PLAYING) {
             mediaPlayer.pause()
             playerInfo = PlayerInfo(PlayerState.STATE_PAUSED, getCurrentTrackTime())
+            Log.d("PLAYER", "${playerInfo.playerState} ${playerInfo.elapsedTime}")
             notifyPlayerInfoChanged(playerInfo)
         }
     }
