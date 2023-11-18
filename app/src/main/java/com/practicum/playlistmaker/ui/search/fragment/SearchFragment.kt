@@ -145,7 +145,7 @@ class SearchFragment : Fragment() {
             binding.searchHistoryLayout.visibility = View.GONE
             searchHistoryAdapter.notifyDataSetChanged()
         }
-        viewModel.state.observe(this) {
+        viewModel.state.observe(viewLifecycleOwner) {
             renderState(it)
         }
     }

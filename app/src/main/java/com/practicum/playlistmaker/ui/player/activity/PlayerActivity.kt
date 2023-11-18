@@ -68,8 +68,16 @@ class PlayerActivity : AppCompatActivity() {
             binding.elapsedTime.text = it.elapsedTime
         }
 
+        viewModel.isFavourite.observe(this) {
+            when (it) {
+                false -> binding.likeButton.setImageResource(R.drawable.like_button)
+                true -> binding.likeButton.setImageResource(R.drawable.favourite_button)
+            }
+        }
+
         binding.back.setOnClickListener { finish() }
         binding.playButton.setOnClickListener { viewModel.playbackControl() }
+        binding.likeButton.setOnClickListener { viewModel.processFavouriteButtonClicked() }
     }
 
     override fun onPause() {
@@ -89,6 +97,5 @@ class PlayerActivity : AppCompatActivity() {
     private fun pausePlayer() {
         binding.playButton.setImageResource(R.drawable.play_button)
     }
-
 
 }
