@@ -1,6 +1,8 @@
 package com.practicum.playlistmaker.di
 
 import com.practicum.playlistmaker.data.player.PlayerRepository
+import com.practicum.playlistmaker.domain.db.FavouritesRepository
+import com.practicum.playlistmaker.domain.media.impl.FavouritesInteractorImpl
 import com.practicum.playlistmaker.domain.player.impl.PlayerInteractorImpl
 import com.practicum.playlistmaker.domain.search.model.Track
 import com.practicum.playlistmaker.ui.media.view_model.MediaFavouritesViewModel
@@ -24,11 +26,12 @@ val viewModelModule = module {
 
     viewModel { (track: Track) ->
         val repository = get<PlayerRepository> { parametersOf(track) }
-        PlayerViewModel(PlayerInteractorImpl(repository))
+        val favouritesRepository = get<FavouritesRepository> { parametersOf(track) }
+        PlayerViewModel(track, PlayerInteractorImpl(repository), FavouritesInteractorImpl(favouritesRepository))
     }
 
     viewModel {
-        MediaFavouritesViewModel()
+        MediaFavouritesViewModel(get())
     }
 
     viewModel {

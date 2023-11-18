@@ -2,6 +2,8 @@ package com.practicum.playlistmaker.di
 
 import android.content.Context
 import android.media.MediaPlayer
+import androidx.room.Room
+import com.practicum.playlistmaker.data.db.AppDatabase
 import com.practicum.playlistmaker.data.player.PlayerRepository
 import com.practicum.playlistmaker.data.player.impl.PlayerRepositoryImpl
 import com.practicum.playlistmaker.data.search.network.ITunesApiService
@@ -38,4 +40,9 @@ val dataModule = module {
     factory { MediaPlayer() }
 
     factory<PlayerRepository> { (track: Track) -> PlayerRepositoryImpl(track, get()) }
+
+    single {
+        Room.databaseBuilder(androidContext(), AppDatabase::class.java, "database.db")
+            .build()
+    }
 }

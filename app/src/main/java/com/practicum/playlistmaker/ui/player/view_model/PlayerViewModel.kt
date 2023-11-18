@@ -5,16 +5,20 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.practicum.playlistmaker.domain.db.FavouritesInteractor
 import com.practicum.playlistmaker.domain.player.PlayerInfoObserver
 import com.practicum.playlistmaker.domain.player.PlayerInteractor
 import com.practicum.playlistmaker.domain.player.model.PlayerInfo
 import com.practicum.playlistmaker.domain.player.model.PlayerState
+import com.practicum.playlistmaker.domain.search.model.Track
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class PlayerViewModel(
+    private val track: Track,
     private val interactor: PlayerInteractor,
+    private val favouritesInteractor: FavouritesInteractor,
 ) : ViewModel() {
     companion object {
         private const val DELAY = 300L
@@ -25,6 +29,9 @@ class PlayerViewModel(
     private val _playerInfo = MutableLiveData(PlayerInfo(PlayerState.STATE_DEFAULT, "00:00"))
     val playerInfo: LiveData<PlayerInfo> get() = _playerInfo
 
+    private val _isFavourite = MutableLiveData<Boolean>()
+    val isFavourite: LiveData<Boolean> get() = _isFavourite
+
     init {
         interactor.getPlayerInfo(
             object : PlayerInfoObserver {
@@ -33,6 +40,9 @@ class PlayerViewModel(
                 }
             }
         )
+        viewModelScope.launch {
+            _isFavourite.value = favouritesInteractor.isFavorite(track)
+        }
     }
 
     private fun startPlayer() {
@@ -77,6 +87,18 @@ class PlayerViewModel(
             else -> {
                 _playerInfo.value =
                     PlayerInfo(PlayerState.STATE_PLAYING, interactor.getCurrentTrackTime())
+            }
+        }
+    }
+
+    fun processFavouriteButtonClicked() {
+        viewModelScope.launch {
+            if (_isFavourite.value == true) {
+                favouritesInteractor.removeFromFavoriteTrackList(track)
+                _isFavourite.postValue(false)
+            } else {
+                favouritesInteractor.addToFavoriteTrackList(track)
+                _isFavourite.postValue(true)
             }
         }
     }
