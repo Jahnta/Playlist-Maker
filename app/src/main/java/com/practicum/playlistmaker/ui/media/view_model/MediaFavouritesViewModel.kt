@@ -47,11 +47,6 @@ class MediaFavouritesViewModel(
         }
     }
 
-
-    private fun renderState(state: FavouritesState) {
-        _state.postValue(state)
-    }
-
     companion object {
         private const val CLICK_DEBOUNCE_DELAY = 500L
     }
