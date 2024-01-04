@@ -4,7 +4,7 @@
     <color name="snack_bg">#FFFFFF</color>
 
 
-    <color name="background_navbar">@color/YP_Black</color>
+    <color name="background_navbar">@color/black</color>
 
 
     <color name="handler_elem">@color/YP_White</color>
