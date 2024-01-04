@@ -18,7 +18,15 @@ class PlaylistsAdapter(private var onClicked: ((Playlist) -> Unit)? = null) :
 
         fun bind(playlist: Playlist) {
             binding.playlistTitle.text = playlist.playlistTitle
-            binding.playlistTracksCount.text = playlist.playlistTracksCount.toString()
+            val innerNumber = playlist.playlistTracksCount.toString()
+            val text = when {
+                innerNumber.toInt() % 10 == 1 && innerNumber.toInt() % 100 != 11 -> "трек"
+                innerNumber.toInt() % 10 == 2 && innerNumber.toInt() % 100 != 12 -> "трека"
+                innerNumber.toInt() % 10 == 3 && innerNumber.toInt() % 100 != 13 -> "трека"
+                innerNumber.toInt() % 10 == 4 && innerNumber.toInt() % 100 != 14 -> "трека"
+                else -> "треков"
+            }
+            binding.playlistTracksCount.text = "$innerNumber $text"
             Glide.with(itemView)
                 .load(playlist.playlistCoverPath)
                 .placeholder(R.drawable.placeholder)

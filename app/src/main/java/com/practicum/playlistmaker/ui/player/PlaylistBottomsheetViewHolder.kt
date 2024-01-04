@@ -15,11 +15,11 @@ class PlaylistBottomSheetViewHolder(
         binding.tvTitle.text = playlist.playlistTitle
         val innerNumber = playlist.playlistTracksCount.toString()
         val text = when {
-            innerNumber.toInt() % 10 == 1 && innerNumber.toInt() % 100 != 11 -> " трек"
-            innerNumber.toInt() % 10 == 2 && innerNumber.toInt() % 100 != 12 -> " трека"
-            innerNumber.toInt() % 10 == 3 && innerNumber.toInt() % 100 != 13 -> " трека"
-            innerNumber.toInt() % 10 == 4 && innerNumber.toInt() % 100 != 14 -> " трека"
-            else -> " треков"
+            innerNumber.toInt() % 10 == 1 && innerNumber.toInt() % 100 != 11 -> "трек"
+            innerNumber.toInt() % 10 == 2 && innerNumber.toInt() % 100 != 12 -> "трека"
+            innerNumber.toInt() % 10 == 3 && innerNumber.toInt() % 100 != 13 -> "трека"
+            innerNumber.toInt() % 10 == 4 && innerNumber.toInt() % 100 != 14 -> "трека"
+            else -> "треков"
         }
         val number = "$innerNumber $text"
         binding.tvAmount.text = number
@@ -28,7 +28,10 @@ class PlaylistBottomSheetViewHolder(
         Glide.with(itemView)
             .load(playlist.playlistCoverPath)
             .placeholder(R.drawable.placeholder)
-            .transform(CenterCrop(), RoundedCorners(itemView.resources.getDimensionPixelSize(R.dimen.corner_radius_8)))
+            .transform(
+                CenterCrop(),
+                RoundedCorners(itemView.resources.getDimensionPixelSize(R.dimen.corner_radius_8))
+            )
             .into(binding.ivCover)
     }
 }

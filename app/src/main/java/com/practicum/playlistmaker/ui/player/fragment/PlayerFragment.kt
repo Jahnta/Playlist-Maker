@@ -56,7 +56,26 @@ class PlayerFragment : Fragment() {
             BottomSheetBehavior.from(bottomSheetContainer).apply {
                 state = BottomSheetBehavior.STATE_HIDDEN
             }
-        bottomSheetObserver(bottomSheetBehavior, binding.overlay)
+
+        bottomSheetBehavior.addBottomSheetCallback(
+            object : BottomSheetBehavior.BottomSheetCallback() {
+                override fun onStateChanged(bottomSheet: View, newState: Int) {
+                    when (newState) {
+                        BottomSheetBehavior.STATE_HIDDEN -> {
+                            binding.overlay.visibility = View.GONE
+                            Log.d("D", "GONE")
+                        }
+                        else -> {
+                            binding.overlay.visibility = View.VISIBLE
+                            Log.d("D", "VISIBLE")
+                        }
+                    }
+                }
+
+                override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                }
+            }
+        )
 
         track = arguments?.getParcelable<Track>("track")
 
@@ -126,10 +145,8 @@ class PlayerFragment : Fragment() {
             binding.recyclerView.adapter = PlaylistBottomSheetAdapter(playlistList) {
                 addTrackToPlaylist(track!!, it)
                 bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
-                Log.d("Запись в плейлист", "click!")
             }
         }
-
     }
 
     override fun onPause() {
@@ -148,23 +165,6 @@ class PlayerFragment : Fragment() {
 
     private fun pausePlayer() {
         binding.playButton.setImageResource(R.drawable.play_button)
-    }
-
-    private fun bottomSheetObserver(
-        bottomSheetBehavior: BottomSheetBehavior<LinearLayout>,
-        overlay: View
-    ) {
-        bottomSheetBehavior.addBottomSheetCallback(object :
-            BottomSheetBehavior.BottomSheetCallback() {
-            override fun onStateChanged(bottomSheet: View, newState: Int) {
-                if (newState == BottomSheetBehavior.STATE_HIDDEN) overlay.visibility = View.GONE
-                else overlay.visibility = View.VISIBLE
-            }
-
-            override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                overlay.alpha = slideOffset
-            }
-        })
     }
 
     private fun addTrackToPlaylist(track: Track, playlist: Playlist) {
