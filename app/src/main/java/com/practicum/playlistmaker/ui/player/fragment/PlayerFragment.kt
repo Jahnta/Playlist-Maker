@@ -73,6 +73,7 @@ class PlayerFragment : Fragment() {
                 }
 
                 override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                    binding.overlay.alpha = 0.7f + slideOffset                    
                 }
             }
         )
