@@ -1,6 +1,7 @@
 package com.practicum.playlistmaker.data.db
 
 import com.practicum.playlistmaker.data.converters.TrackDbConvertor
+import com.practicum.playlistmaker.data.db.entity.TrackEntity
 import com.practicum.playlistmaker.domain.db.FavouritesRepository
 import com.practicum.playlistmaker.domain.search.model.Track
 import kotlinx.coroutines.Dispatchers
@@ -31,6 +32,9 @@ class FavouritesRepositoryImpl(
         val favouriteTracks = appDatabase.trackDao().getTracksId()
         favouriteTracks.contains(track.trackId)
     }
+
+
+
 
     private fun convertFromTrackEntity(tracks: List<TrackEntity>): List<Track> {
         return tracks.map {

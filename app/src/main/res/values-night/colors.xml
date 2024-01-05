@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="snack_text">#FF000000</color>
+    <color name="snack_bg">#FFFFFF</color>
+
+
+    <color name="background_navbar">@color/black</color>
+
+
+    <color name="handler_elem">@color/YP_White</color>
+
+    <color name="playlist_amount">@color/YP_Text_Gray</color>
+
+    <color name="new_playlist_button">@color/YP_White</color>
+    <color name="new_playlist_button_text">@color/YP_Black</color>
+</resources>

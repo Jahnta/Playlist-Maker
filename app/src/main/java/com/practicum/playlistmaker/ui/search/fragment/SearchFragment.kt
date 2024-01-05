@@ -11,12 +11,12 @@ import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.practicum.playlistmaker.R
 import com.practicum.playlistmaker.databinding.FragmentSearchBinding
 import com.practicum.playlistmaker.domain.search.model.SearchFragmentState
 import com.practicum.playlistmaker.domain.search.model.Track
-import com.practicum.playlistmaker.ui.player.activity.PlayerActivity
 import com.practicum.playlistmaker.ui.search.TrackAdapter
 import com.practicum.playlistmaker.ui.search.view_model.SearchViewModel
 import com.practicum.playlistmaker.utils.debounce
@@ -29,7 +29,7 @@ class SearchFragment : Fragment() {
     }
 
     private lateinit var binding: FragmentSearchBinding
-    private val viewModel : SearchViewModel by viewModel()
+    private val viewModel: SearchViewModel by viewModel()
 
     private val tracks = ArrayList<Track>()
     private var searchHistoryTracks = ArrayList<Track>()
@@ -54,11 +54,12 @@ class SearchFragment : Fragment() {
         onTrackClickDebounce = debounce<Track>(
             CLICK_DEBOUNCE_DELAY,
             viewLifecycleOwner.lifecycleScope,
-            false) { track ->
-                viewModel.saveTrack(track)
-                PlayerActivity.newIntent(requireContext(), track).apply {
-                    startActivity(this)
-                }
+            false
+        ) { track ->
+            viewModel.saveTrack(track)
+            val bundle = Bundle()
+            bundle.putParcelable("track", track)
+            findNavController().navigate(R.id.playerFragment, bundle)
         }
 
         trackAdapter = TrackAdapter {
@@ -119,7 +120,8 @@ class SearchFragment : Fragment() {
             viewModel.stopSearch()
             binding.queryInput.setText("")
             viewModel.savedSearchRequest = ""
-            val keyboard = requireActivity().getSystemService(AppCompatActivity.INPUT_METHOD_SERVICE) as InputMethodManager
+            val keyboard =
+                requireActivity().getSystemService(AppCompatActivity.INPUT_METHOD_SERVICE) as InputMethodManager
             keyboard.hideSoftInputFromWindow(
                 binding.queryInput.windowToken, 0
             )

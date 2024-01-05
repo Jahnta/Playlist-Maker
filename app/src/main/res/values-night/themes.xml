@@ -18,6 +18,7 @@
         <item name="text_color_primary">@color/YP_White</item>
         <item name="text_color_secondary">@color/YP_White</item>
         <item name="text_color_searchHint">@color/YP_Black</item>
+        <item name="text_color_playlistText">@color/YP_Text_Gray</item>
         <item name="icon_color_primary">@color/YP_Black</item>
         <item name="button_color_primary">@color/YP_White</item>
         <item name="button_color_secondary">@color/YP_White</item>

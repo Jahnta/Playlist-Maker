@@ -6,6 +6,7 @@
     <attr name="text_color_primary" format="reference" />
     <attr name="text_color_secondary" format="reference" />
     <attr name="text_color_searchHint" format="reference" />
+    <attr name="text_color_playlistText" format="reference" />
     <attr name="icon_color_primary" format="reference" />
     <attr name="icon_color_secondary" format="reference" />
     <attr name="button_color_primary" format="reference" />

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.practicum.playlistmaker.R
 import com.practicum.playlistmaker.databinding.FragmentFavouritesBinding
@@ -47,8 +48,9 @@ class MediaFavouritesFragment : Fragment() {
 
         trackAdapter = TrackAdapter {
             if (favouritesViewModel.clickDebounce()) {
-                PlayerActivity.newIntent(requireContext(), it)
-                    .apply { startActivity(this) }
+                val bundle = Bundle()
+                bundle.putParcelable("track", it)
+                findNavController().navigate(R.id.playerFragment, bundle)
             }
         }
         binding.trackList.layoutManager = LinearLayoutManager(requireContext())

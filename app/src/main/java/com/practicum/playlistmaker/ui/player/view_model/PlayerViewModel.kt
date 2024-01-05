@@ -6,11 +6,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.practicum.playlistmaker.domain.db.FavouritesInteractor
+import com.practicum.playlistmaker.domain.db.PlaylistInteractor
+import com.practicum.playlistmaker.domain.media.model.Playlist
 import com.practicum.playlistmaker.domain.player.PlayerInfoObserver
 import com.practicum.playlistmaker.domain.player.PlayerInteractor
 import com.practicum.playlistmaker.domain.player.model.PlayerInfo
 import com.practicum.playlistmaker.domain.player.model.PlayerState
 import com.practicum.playlistmaker.domain.search.model.Track
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -19,6 +23,7 @@ class PlayerViewModel(
     private val track: Track,
     private val interactor: PlayerInteractor,
     private val favouritesInteractor: FavouritesInteractor,
+    private val playlistInteractor: PlaylistInteractor,
 ) : ViewModel() {
     companion object {
         private const val DELAY = 300L
@@ -31,6 +36,7 @@ class PlayerViewModel(
 
     private val _isFavourite = MutableLiveData<Boolean>()
     val isFavourite: LiveData<Boolean> get() = _isFavourite
+
 
     init {
         interactor.getPlayerInfo(
@@ -99,6 +105,36 @@ class PlayerViewModel(
             } else {
                 favouritesInteractor.addToFavoriteTrackList(track)
                 _isFavourite.postValue(true)
+            }
+        }
+    }
+
+    val playlists: MutableLiveData<List<Playlist>> = MutableLiveData<List<Playlist>>(emptyList())
+
+    fun getPlaylists(): LiveData<List<Playlist>> {
+        viewModelScope.launch {
+            playlistInteractor.getPlaylists()
+                .collect {
+                    if (it.isNotEmpty()) {
+                        playlists.postValue(it)
+                    } else {
+                        playlists.postValue(emptyList())
+                    }
+                }
+        }
+        return playlists
+    }
+
+    val isInPlaylist = MutableLiveData(false)
+    suspend fun addTrackToPlaylist(track: Track, playlist: Playlist) {
+        CoroutineScope(Dispatchers.IO).launch {
+            if (playlist.playlistTrackIds.contains(track.trackId)) {
+                isInPlaylist.postValue(true)
+            } else {
+                isInPlaylist.postValue(false)
+                playlist.playlistTrackIds = (playlist.playlistTrackIds + track.trackId)
+                playlist.playlistTracksCount = (playlist.playlistTracksCount.plus(1))
+                playlistInteractor.updatePlaylist(track, playlist)
             }
         }
     }

@@ -1,14 +1,12 @@
 package com.practicum.playlistmaker.ui.root
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.commit
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.practicum.playlistmaker.R
 import com.practicum.playlistmaker.databinding.ActivityRootBinding
-import com.practicum.playlistmaker.ui.media.fragment.MediaFragment
 
 class RootActivity : AppCompatActivity() {
 
@@ -19,10 +17,12 @@ class RootActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.rootFragmentContainerView) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.rootFragmentContainerView) as NavHostFragment
         val navController = navHostFragment.navController
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         bottomNavigationView.setupWithNavController(navController)
     }
+
 }
