@@ -11,14 +11,14 @@ import com.practicum.playlistmaker.R
 import com.practicum.playlistmaker.databinding.FragmentFavouritesBinding
 import com.practicum.playlistmaker.domain.media.model.FavouritesState
 import com.practicum.playlistmaker.domain.search.model.Track
-import com.practicum.playlistmaker.ui.media.view_model.MediaFavouritesViewModel
+import com.practicum.playlistmaker.ui.media.view_model.FavouritesViewModel
 import com.practicum.playlistmaker.ui.search.TrackAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MediaFavouritesFragment : Fragment() {
+class FavouritesFragment : Fragment() {
 
 
-    private val favouritesViewModel: MediaFavouritesViewModel by viewModel()
+    private val viewModel: FavouritesViewModel by viewModel()
 
     private lateinit var binding: FragmentFavouritesBinding
 
@@ -37,25 +37,28 @@ class MediaFavouritesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        favouritesViewModel.state.observe(viewLifecycleOwner) {
+        viewModel.state.observe(viewLifecycleOwner) {
             renderState(it)
         }
 
-        trackAdapter = TrackAdapter {
-            if (favouritesViewModel.clickDebounce()) {
-                val bundle = Bundle()
-                bundle.putParcelable("track", it)
-                findNavController().navigate(R.id.playerFragment, bundle)
-            }
-        }
-        binding.trackList.layoutManager = LinearLayoutManager(requireContext())
+        trackAdapter = TrackAdapter(
+            clickListener = {
+                if (viewModel.clickDebounce()) {
+                    val bundle = Bundle()
+                    bundle.putParcelable("track", it)
+                    findNavController().navigate(R.id.playerFragment, bundle)
+                }
+            },
+            longClickListener = null
+        )
         trackAdapter.tracks = favouriteTracks
+        binding.trackList.layoutManager = LinearLayoutManager(requireContext())
         binding.trackList.adapter = trackAdapter
     }
 
     override fun onResume() {
         super.onResume()
-        favouritesViewModel.getTracks()
+        viewModel.getTracks()
     }
 
     private fun renderState(state: FavouritesState) {
@@ -85,7 +88,7 @@ class MediaFavouritesFragment : Fragment() {
     companion object {
 
         private const val TEXT_KEY = "text_key"
-        fun newInstance(text: String) = MediaFavouritesFragment().apply {
+        fun newInstance(text: String) = FavouritesFragment().apply {
             arguments = Bundle().apply {
                 putString(TEXT_KEY, text)
             }

@@ -62,12 +62,18 @@ class SearchFragment : Fragment() {
             findNavController().navigate(R.id.playerFragment, bundle)
         }
 
-        trackAdapter = TrackAdapter {
-            onTrackClickDebounce(it)
-        }
-        searchHistoryAdapter = TrackAdapter {
-            onTrackClickDebounce(it)
-        }
+        trackAdapter = TrackAdapter(
+            clickListener = {
+                onTrackClickDebounce(it)
+            },
+            longClickListener = null
+        )
+        searchHistoryAdapter = TrackAdapter(
+            clickListener = {
+                onTrackClickDebounce(it)
+            },
+            longClickListener = null
+        )
 
         binding.trackList.layoutManager = LinearLayoutManager(requireContext())
         trackAdapter.tracks = tracks

@@ -7,6 +7,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.practicum.playlistmaker.data.db.entity.PlaylistEntity
+import com.practicum.playlistmaker.domain.media.model.Playlist
 
 @Dao
 interface PlaylistDao {
@@ -19,7 +20,10 @@ interface PlaylistDao {
 
     @Query("SELECT * FROM playlist_table")
     suspend fun getPlaylists(): List<PlaylistEntity>
+
+    @Query("SELECT * FROM playlist_table WHERE playlistId=:playlistId")
+    fun getPlaylist(playlistId: Int): PlaylistEntity
     @Update(entity = PlaylistEntity::class, onConflict = OnConflictStrategy.REPLACE)
-    abstract fun updatePlaylist(playlistEntity: PlaylistEntity)
+    suspend fun updatePlaylist(playlistEntity: PlaylistEntity)
 
 }

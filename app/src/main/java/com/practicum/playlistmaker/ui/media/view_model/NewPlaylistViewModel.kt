@@ -9,8 +9,8 @@ import com.practicum.playlistmaker.domain.media.model.NewPlaylistState
 import com.practicum.playlistmaker.domain.media.model.Playlist
 import kotlinx.coroutines.launch
 
-class MediaNewPlaylistViewModel(
-    private val playlistInteractor: PlaylistInteractor
+open class NewPlaylistViewModel(
+    private val interactor: PlaylistInteractor
 ) : ViewModel() {
 
     private val _state = MutableLiveData<NewPlaylistState>(NewPlaylistState.Empty)
@@ -18,7 +18,7 @@ class MediaNewPlaylistViewModel(
 
     fun addPlayList(playlist: Playlist) {
         viewModelScope.launch {
-            playlistInteractor.addPlaylist(playlist)
+            interactor.addPlaylist(playlist)
         }
     }
 

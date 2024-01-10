@@ -10,4 +10,16 @@
     <string name="terms_text">License</string>
     <string name="media_message">Mediateca page</string>
     <string name="search_message">Search page</string>
+    <string name="no_data">Nothing found</string>
+    <string name="no_connection">Connection error</string>
+    <string name="refresh">Refresh</string>
+    <string name="clear_history">Clear history</string>
+    <string name="search_history_message">Search history</string>
+    <string name="duration_text">Duration</string>
+    <string name="trackAlbumText">Album</string>
+    <string name="trackYearText">Year</string>
+    <string name="trackGenreText">Genre</string>
+    <string name="trackCountryText">Country</string>
+    <string name="createPlaylist">New playlist</string>
+    <string name="serverError">Server error</string>
 </resources>

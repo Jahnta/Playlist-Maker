@@ -15,16 +15,16 @@
     <string name="support_email_subject" translatable="false">Сообщение разработчикам и разработчицам приложения Playlist Maker</string>
     <string name="support_email_text" translatable="false">Спасибо разработчикам и разработчицам за крутое приложение!</string>
     <string name="license_link" translatable="false">https://yandex.ru/legal/practicum_offer/</string>
-    <string name="trackname">trackName</string>
-    <string name="artistname">artistName</string>
-    <string name="tracktime">trackTime</string>
+    <string name="trackname" translatable="false">trackName</string>
+    <string name="artistname" translatable="false">artistName</string>
+    <string name="tracktime" translatable="false">trackTime</string>
     <string name="no_data">Ничего не нашлось</string>
     <string name="no_connection">Проблемы со связью\n\nЗагрузка не удалась. Проверьте подключение к интернету</string>
     <string name="refresh">Обновить</string>
     <string name="clear_history">Очистить историю</string>
     <string name="search_history_message">Вы искали</string>
     <string name="duration_text">Длительность</string>
-    <string name="trackTime_placeholder">00:00</string>
+    <string name="trackTime_placeholder" translatable="false">00:00</string>
     <string name="trackAlbumText">Альбом</string>
     <string name="trackYearText">Год</string>
     <string name="trackGenreText">Жанр</string>
@@ -33,18 +33,19 @@
     <string name="noConnectionError">Проверьте подключение к интернету</string>
     <string name="serverError">Ошибка сервера</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="favourites_is_empty">Ваша медиатека пуста</string>
     <string name="playlist_add">Новый плейлист</string>
     <string name="playlist_title_input_layout">Название*</string>
     <string name="playlist_desc_input_layout">Описание</string>
     <string name="create">Создать</string>
-    <string name="question">Завершить создание плейлиста?</string>
+    <string name="end_create_question">Завершить создание плейлиста?</string>
     <string name="warning">Все несохраненные данные будут потеряны</string>
     <string name="cancel">Отмена</string>
     <string name="done">Завершить\n</string>
     <string name="covers">covers</string>
-    <string name="playlist_created">Плейлист %s создан</string>
+    <string name="playlist_created">Плейлист "%s" сохранен</string>
+    <string name="no_data_to_share">В плейлисте "%s" нет треков</string>
     <string name="add_to_playlist">Добавить в плейлист</string>
     <string name="added">Добавлено в плейлист %s</string>
     <string name="already_in_playlist">Трек уже добавлен в плейлист %s</string>
@@ -52,4 +53,31 @@
     <string name="playlist_share">Поделиться</string>
     <string name="playlist_edit">Редактировать</string>
     <string name="playlist_delete">Удалить</string>
+    <string name="no">Нет</string>
+    <string name="yes">Да</string>
+    <string name="delete_track_question">Хотите удалить трек?</string>
+    <string name="delete_playlist_question">Хотите удалить плейлист?</string>
+    <string name="end_edit_question">Завершить редактирование плейлиста?</string>
+    <string name="save">Сохранить</string>
+    <string name="edit">Редактировать</string>
+    <string name="zero_duration">0 минут</string>
+    <string name="zero_tracks">0 треков</string>
+
+    <plurals name="minutes">
+        <item quantity="zero">%d минут</item>
+        <item quantity="one">%d минута</item>
+        <item quantity="two">%d минуты</item>
+        <item quantity="few">%d минуты</item>
+        <item quantity="many">%d минут</item>
+        <item quantity="other">%d минут</item>
+    </plurals>
+
+    <plurals name="tracks">
+        <item quantity="zero">%d треков</item>
+        <item quantity="one">%d трек</item>
+        <item quantity="two">%d трека</item>
+        <item quantity="few">%d трека</item>
+        <item quantity="many">%d треков</item>
+        <item quantity="other">%d треков</item>
+    </plurals>
 </resources>

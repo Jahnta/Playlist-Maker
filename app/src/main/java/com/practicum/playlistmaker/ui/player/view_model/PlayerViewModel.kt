@@ -1,6 +1,5 @@
 package com.practicum.playlistmaker.ui.player.view_model
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -21,7 +20,7 @@ import kotlinx.coroutines.launch
 
 class PlayerViewModel(
     private val track: Track,
-    private val interactor: PlayerInteractor,
+    private val playerInteractor: PlayerInteractor,
     private val favouritesInteractor: FavouritesInteractor,
     private val playlistInteractor: PlaylistInteractor,
 ) : ViewModel() {
@@ -39,7 +38,7 @@ class PlayerViewModel(
 
 
     init {
-        interactor.getPlayerInfo(
+        playerInteractor.getPlayerInfo(
             object : PlayerInfoObserver {
                 override fun onPlayerInfoChanged(playerInfo: PlayerInfo) {
                     _playerInfo.value = playerInfo
@@ -52,15 +51,15 @@ class PlayerViewModel(
     }
 
     private fun startPlayer() {
-        interactor.startPlayer()
+        playerInteractor.startPlayer()
     }
 
     fun pausePlayer() {
-        interactor.pausePlayer()
+        playerInteractor.pausePlayer()
     }
 
     fun destroyPlayer() {
-        interactor.releasePlayer()
+        playerInteractor.releasePlayer()
         timerJob = null
     }
 
@@ -80,7 +79,7 @@ class PlayerViewModel(
                 timerJob = viewModelScope.launch {
                     while (playerInfo.value!!.playerState == PlayerState.STATE_PLAYING) {
                         _playerInfo.value =
-                            PlayerInfo(PlayerState.STATE_PLAYING, interactor.getCurrentTrackTime())
+                            PlayerInfo(PlayerState.STATE_PLAYING, playerInteractor.getCurrentTrackTime())
                         delay(DELAY)
                     }
                 }
@@ -92,7 +91,7 @@ class PlayerViewModel(
 
             else -> {
                 _playerInfo.value =
-                    PlayerInfo(PlayerState.STATE_PLAYING, interactor.getCurrentTrackTime())
+                    PlayerInfo(PlayerState.STATE_PLAYING, playerInteractor.getCurrentTrackTime())
             }
         }
     }
@@ -134,7 +133,7 @@ class PlayerViewModel(
                 isInPlaylist.postValue(false)
                 playlist.playlistTrackIds = (playlist.playlistTrackIds + track.trackId)
                 playlist.playlistTracksCount = (playlist.playlistTracksCount.plus(1))
-                playlistInteractor.updatePlaylist(track, playlist)
+                playlistInteractor.addTrackToPlaylist(track, playlist)
             }
         }
     }

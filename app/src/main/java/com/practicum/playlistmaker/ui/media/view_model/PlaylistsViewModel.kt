@@ -8,12 +8,12 @@ import com.practicum.playlistmaker.domain.db.PlaylistInteractor
 import com.practicum.playlistmaker.domain.media.model.Playlist
 import kotlinx.coroutines.launch
 
-class MediaPlaylistsViewModel(private val playlistInteractor: PlaylistInteractor) : ViewModel() {
+class PlaylistsViewModel(private val interactor: PlaylistInteractor) : ViewModel() {
 
-    private val playlists = MutableLiveData<List<Playlist>>()
+    val playlists: MutableLiveData<List<Playlist>> = MutableLiveData<List<Playlist>>()
     fun getPlaylists() : LiveData<List<Playlist>> {
         viewModelScope.launch {
-            playlistInteractor.getPlaylists()
+            interactor.getPlaylists()
                 .collect {
                     if (it.isNotEmpty()) {
                         playlists.postValue(it)

@@ -1,7 +1,6 @@
 package com.practicum.playlistmaker.ui.media
 
 import android.view.LayoutInflater
-import android.view.RoundedCorner
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -12,7 +11,7 @@ import com.practicum.playlistmaker.R
 import com.practicum.playlistmaker.databinding.PlaylistViewBinding
 import com.practicum.playlistmaker.domain.media.model.Playlist
 
-class PlaylistsAdapter(private var onClicked: ((Playlist) -> Unit)? = null) :
+class PlaylistsAdapter(private var clickListener: ((Playlist) -> Unit)?) :
     RecyclerView.Adapter<PlaylistsAdapter.PlaylistViewHolder>() {
     class PlaylistViewHolder(private val binding: PlaylistViewBinding) : RecyclerView.ViewHolder(binding.root) {
 
@@ -37,12 +36,8 @@ class PlaylistsAdapter(private var onClicked: ((Playlist) -> Unit)? = null) :
 
     var playlists = ArrayList<Playlist>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaylistViewHolder {
-        val binding = PlaylistViewBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
-        )
-        return PlaylistViewHolder(binding)
+        val layoutInspector = LayoutInflater.from(parent.context)
+        return PlaylistViewHolder(PlaylistViewBinding.inflate(layoutInspector, parent, false))
     }
 
     override fun getItemCount(): Int {
@@ -52,7 +47,14 @@ class PlaylistsAdapter(private var onClicked: ((Playlist) -> Unit)? = null) :
     override fun onBindViewHolder(holder: PlaylistViewHolder, position: Int) {
         holder.bind(playlists[position])
         holder.itemView.setOnClickListener {
-            onClicked?.invoke(playlists[position])
+            clickListener?.invoke(playlists[position])
+            notifyDataSetChanged()
         }
+    }
+
+    fun setItems(items: List<Playlist>) {
+        playlists.clear()
+        playlists.addAll(items)
+        notifyDataSetChanged()
     }
 }

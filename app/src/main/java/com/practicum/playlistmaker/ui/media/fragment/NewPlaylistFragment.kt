@@ -24,26 +24,28 @@ import com.practicum.playlistmaker.R
 import com.practicum.playlistmaker.databinding.FragmentNewPlaylistBinding
 import com.practicum.playlistmaker.domain.media.model.NewPlaylistState
 import com.practicum.playlistmaker.domain.media.model.Playlist
-import com.practicum.playlistmaker.ui.media.view_model.MediaNewPlaylistViewModel
+import com.practicum.playlistmaker.ui.media.view_model.NewPlaylistViewModel
 import com.practicum.playlistmaker.utils.Tools
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
 import java.io.FileOutputStream
 
-class MediaNewPlaylistFragment : Fragment() {
-    private var _binding: FragmentNewPlaylistBinding? = null
-    private val binding get() = _binding!!
+open class NewPlaylistFragment : Fragment() {
+    lateinit var binding: FragmentNewPlaylistBinding
     private lateinit var bottomNavigator: BottomNavigationView
 
-    private val viewModel: MediaNewPlaylistViewModel by viewModel()
-    private var coverPath: Uri? = null
+    private val viewModel: NewPlaylistViewModel by viewModel()
+    var coverPath: Uri? = null
 
-    private val pickMedia =
+    val pickMedia =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
             uri?.let {
                 Glide.with(requireContext())
                     .load(uri)
-                    .transform(CenterCrop(), RoundedCorners(requireContext().resources.getDimensionPixelSize(R.dimen.corner_radius_8)))
+                    .transform(
+                        CenterCrop(),
+                        RoundedCorners(requireContext().resources.getDimensionPixelSize(R.dimen.corner_radius_8))
+                    )
                     .into(binding.playlistCoverImage)
                 saveImageToInternalStorage(uri)
             }
@@ -53,7 +55,7 @@ class MediaNewPlaylistFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentNewPlaylistBinding.inflate(inflater, container, false)
+        binding = FragmentNewPlaylistBinding.inflate(inflater, container, false)
         bottomNavigator = requireActivity().findViewById(R.id.bottomNavigationView)
         bottomNavigator.visibility = View.GONE
         return binding.root
@@ -137,13 +139,13 @@ class MediaNewPlaylistFragment : Fragment() {
         coverPath = file.toUri()
     }
 
-    private fun showDialog() {
+    fun showDialog() {
         if (binding.playlistTitleEt.text.toString()
                 .isNotEmpty() || binding.playlistDescEt.text.toString()
                 .isNotEmpty() || (coverPath != null)
         ) {
             MaterialAlertDialogBuilder(requireContext())
-                .setTitle(R.string.question)
+                .setTitle(R.string.end_create_question)
                 .setMessage(R.string.warning)
                 .setNeutralButton(R.string.cancel) { _, _ -> }
                 .setNegativeButton(R.string.done) { _, _ ->

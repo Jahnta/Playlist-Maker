@@ -174,7 +174,6 @@ class PlayerFragment : Fragment() {
             viewModel.addTrackToPlaylist(track, playlist)
             delay(300)
             viewModel.isInPlaylist.observe(requireActivity()) { isInPlaylist ->
-
                 if (!trackIsAdded) {
                     if (isInPlaylist) {
                         Tools.showSnackbar(
@@ -182,7 +181,6 @@ class PlayerFragment : Fragment() {
                             getString(R.string.already_in_playlist, playlist.playlistTitle),
                             requireActivity()
                         )
-                        Log.d("Запись в плейлист", "Уже есть ")
                         return@observe
                     } else {
                         Tools.showSnackbar(
@@ -190,7 +188,6 @@ class PlayerFragment : Fragment() {
                             getString(R.string.added, playlist.playlistTitle),
                             requireActivity()
                         )
-                        Log.d("Запись в плейлист", "Добавлено  $isInPlaylist")
                         return@observe
                     }
                 }
