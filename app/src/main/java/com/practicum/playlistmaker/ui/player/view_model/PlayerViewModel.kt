@@ -1,5 +1,6 @@
 package com.practicum.playlistmaker.ui.player.view_model
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -24,9 +25,6 @@ class PlayerViewModel(
     private val favouritesInteractor: FavouritesInteractor,
     private val playlistInteractor: PlaylistInteractor,
 ) : ViewModel() {
-    companion object {
-        private const val DELAY = 300L
-    }
 
     private var timerJob: Job? = null
 
@@ -38,6 +36,7 @@ class PlayerViewModel(
 
 
     init {
+        Log.d("D", "viewmodel created")
         playerInteractor.getPlayerInfo(
             object : PlayerInfoObserver {
                 override fun onPlayerInfoChanged(playerInfo: PlayerInfo) {
@@ -73,7 +72,6 @@ class PlayerViewModel(
     }
 
     private fun updateTimer() {
-        timerJob?.cancel()
         when (playerInfo.value?.playerState) {
             PlayerState.STATE_PLAYING -> {
                 timerJob = viewModelScope.launch {
@@ -131,8 +129,6 @@ class PlayerViewModel(
                 isInPlaylist.postValue(true)
             } else {
                 isInPlaylist.postValue(false)
-                playlist.playlistTrackIds = (playlist.playlistTrackIds + track.trackId)
-                playlist.playlistTracksCount = (playlist.playlistTracksCount.plus(1))
                 playlistInteractor.addTrackToPlaylist(track, playlist)
             }
         }
@@ -141,5 +137,9 @@ class PlayerViewModel(
     override fun onCleared() {
         super.onCleared()
         destroyPlayer()
+    }
+
+    companion object {
+        private const val DELAY = 300L
     }
 }

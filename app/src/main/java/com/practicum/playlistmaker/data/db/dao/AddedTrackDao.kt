@@ -18,4 +18,7 @@ interface AddedTrackDao {
     @Query("SELECT * FROM added_track_table")
     suspend fun getAddedTracks(): List<AddedTrackEntity>
 
+    @Query("SELECT * FROM added_track_table WHERE trackId=:trackId")
+    suspend fun getAddedTrack(trackId: String):AddedTrackEntity
+
 }

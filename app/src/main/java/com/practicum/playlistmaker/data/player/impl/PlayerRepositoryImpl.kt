@@ -38,6 +38,7 @@ class PlayerRepositoryImpl(
     }
 
     override fun startPlayer() {
+        Log.d("PLAYER", "${playerInfo.playerState} ${playerInfo.elapsedTime}")
         mediaPlayer.start()
         playerInfo = PlayerInfo(PlayerState.STATE_PLAYING, getCurrentTrackTime())
         Log.d("PLAYER", "${playerInfo.playerState} ${playerInfo.elapsedTime}")

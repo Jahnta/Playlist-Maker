@@ -36,9 +36,10 @@ class PlaylistDetailsViewModel(
 
     suspend fun deleteTrackFromPlaylist(track: Track, playlist: Playlist) {
         CoroutineScope(Dispatchers.IO).launch {
-            playlist.playlistTrackIds = playlist.playlistTrackIds.filter { it != track.trackId }
-            playlist.playlistTracksCount = playlist.playlistTracksCount.minus(1)
             playlistInteractor.deleteTrackFromPlaylist(track, playlist)
+            playlistInteractor.getPlaylist(playlist).collect {
+                updatedPlaylist.postValue(it)
+            }
         }
     }
 

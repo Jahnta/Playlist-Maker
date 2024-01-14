@@ -43,7 +43,7 @@
     <string name="warning">Все несохраненные данные будут потеряны</string>
     <string name="cancel">Отмена</string>
     <string name="done">Завершить\n</string>
-    <string name="covers">covers</string>
+    <string name="covers" translatable="false">covers</string>
     <string name="playlist_created">Плейлист "%s" сохранен</string>
     <string name="no_data_to_share">В плейлисте "%s" нет треков</string>
     <string name="add_to_playlist">Добавить в плейлист</string>
@@ -62,6 +62,9 @@
     <string name="edit">Редактировать</string>
     <string name="zero_duration">0 минут</string>
     <string name="zero_tracks">0 треков</string>
+    <string name="favorite">Избранные треки</string>
+    <string name="playlists_text">Плейлисты</string>
+    <string name="playlists_is_empty">Вы не создали ни одного плейлиста</string>
 
     <plurals name="minutes">
         <item quantity="zero">%d минут</item>
@@ -80,4 +83,5 @@
         <item quantity="many">%d треков</item>
         <item quantity="other">%d треков</item>
     </plurals>
+
 </resources>

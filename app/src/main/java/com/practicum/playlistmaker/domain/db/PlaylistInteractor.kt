@@ -12,8 +12,6 @@ interface PlaylistInteractor {
 
     fun getTracks(playlist: Playlist): Flow<List<Track>>
 
-    fun getPlaylistDuration(playlist: Playlist): Flow<String>
-
     suspend fun addPlaylist(playlist: Playlist)
     suspend fun updatePlaylist(playlist: Playlist)
     suspend fun removePlaylist(playlist: Playlist)

@@ -21,10 +21,6 @@ class PlaylistInteractorImpl(
         return repository.getTracks(playlist)
     }
 
-    override fun getPlaylistDuration(playlist: Playlist): Flow<String> {
-        return repository.getPlaylistDuration(playlist)
-    }
-
     override suspend fun addPlaylist(playlist: Playlist) {
         repository.addPlaylist(playlist)
     }

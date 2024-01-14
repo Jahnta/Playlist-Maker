@@ -1,7 +1,6 @@
 package com.practicum.playlistmaker.ui.media.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,13 +36,13 @@ class PlaylistsFragment : Fragment() {
         }
         binding.placeholderMessage.text = requireArguments().getString(TEXT_KEY)
 
-        viewModel.getPlaylists()
-
         adapter = PlaylistsAdapter {
             val bundle = Bundle()
-            bundle.putParcelable("playlist", it)
+            bundle.putParcelable(PLAYLIST_KEY, it)
             findNavController().navigate(R.id.playlistDetailsFragment, bundle)
         }
+
+        viewModel.getPlaylists()
 
         viewModel.playlists.observe(viewLifecycleOwner) {
             if (it.isNullOrEmpty())  {
@@ -58,11 +57,13 @@ class PlaylistsFragment : Fragment() {
             }
         }
 
-        binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
+        binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2, )
         binding.recyclerView.adapter = adapter
     }
 
     companion object {
+
+        private const val PLAYLIST_KEY = "playlist"
 
         private const val TEXT_KEY = "text_key"
         fun newInstance(text: String) = PlaylistsFragment().apply {

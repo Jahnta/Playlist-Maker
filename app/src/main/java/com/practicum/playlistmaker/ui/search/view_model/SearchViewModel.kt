@@ -16,10 +16,6 @@ class SearchViewModel(
     private val interactor: SearchInteractor
 ) : ViewModel() {
 
-    companion object {
-        private const val SEARCH_DEBOUNCE_DELAY = 2000L
-    }
-
     private val handler = Handler(Looper.getMainLooper())
     private val searchRunnable = Runnable { searchRequest(latestSearchText) }
 
@@ -112,5 +108,9 @@ class SearchViewModel(
     fun stopSearch() {
         handler.removeCallbacks(searchRunnable)
         showHistory()
+    }
+
+    companion object {
+        private const val SEARCH_DEBOUNCE_DELAY = 2000L
     }
 }

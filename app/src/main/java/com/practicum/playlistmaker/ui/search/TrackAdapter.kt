@@ -8,8 +8,8 @@ import com.practicum.playlistmaker.domain.media.model.Playlist
 import com.practicum.playlistmaker.domain.search.model.Track
 
 class TrackAdapter(
-    private var clickListener: ((Track) -> Unit)?,
-    private var longClickListener: ((Track) -> Unit)?,
+    private val clickListener: ((Track) -> Unit)?,
+    private val longClickListener: ((Track) -> Unit)?,
 ) :
     RecyclerView.Adapter<TrackViewHolder>() {
 

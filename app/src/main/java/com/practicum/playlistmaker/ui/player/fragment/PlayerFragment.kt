@@ -1,5 +1,6 @@
 package com.practicum.playlistmaker.ui.player.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -22,7 +24,6 @@ import com.practicum.playlistmaker.domain.search.model.Track
 import com.practicum.playlistmaker.ui.player.PlaylistBottomSheetAdapter
 import com.practicum.playlistmaker.ui.player.view_model.PlayerViewModel
 import com.practicum.playlistmaker.utils.Tools
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
@@ -65,6 +66,7 @@ class PlayerFragment : Fragment() {
                             binding.overlay.visibility = View.GONE
                             Log.d("D", "GONE")
                         }
+
                         else -> {
                             binding.overlay.visibility = View.VISIBLE
                             Log.d("D", "VISIBLE")
@@ -73,12 +75,12 @@ class PlayerFragment : Fragment() {
                 }
 
                 override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                    binding.overlay.alpha = 0.7f + slideOffset                    
+                    binding.overlay.alpha = 0.7f + slideOffset
                 }
             }
         )
 
-        track = arguments?.getParcelable<Track>("track")
+        track = arguments?.getParcelable<Track>(TRACK_KEY)
 
         Glide.with(this)
             .load(track?.artworkUrl100?.replaceAfterLast("/", "512x512bb.jpg"))
@@ -155,10 +157,6 @@ class PlayerFragment : Fragment() {
         viewModel.pausePlayer()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        viewModel.destroyPlayer()
-    }
 
     private fun startPlayer() {
         binding.playButton.setImageResource(R.drawable.pause_button)
@@ -169,28 +167,23 @@ class PlayerFragment : Fragment() {
     }
 
     private fun addTrackToPlaylist(track: Track, playlist: Playlist) {
-        var trackIsAdded = false
         lifecycleScope.launch {
             viewModel.addTrackToPlaylist(track, playlist)
-            delay(300)
             viewModel.isInPlaylist.observe(requireActivity()) { isInPlaylist ->
-                if (!trackIsAdded) {
-                    if (isInPlaylist) {
-                        Tools.showSnackbar(
-                            binding.root,
-                            getString(R.string.already_in_playlist, playlist.playlistTitle),
-                            requireActivity()
-                        )
-                        return@observe
-                    } else {
-                        Tools.showSnackbar(
-                            binding.root,
-                            getString(R.string.added, playlist.playlistTitle),
-                            requireActivity()
-                        )
-                        return@observe
-                    }
+                if (isInPlaylist) {
+                    Tools.showSnackbar(
+                        binding.root,
+                        getString(R.string.already_in_playlist, playlist.playlistTitle),
+                        requireActivity()
+                    )
+                } else {
+                    Tools.showSnackbar(
+                        binding.root,
+                        getString(R.string.added, playlist.playlistTitle),
+                        requireActivity()
+                    )
                 }
+
             }
         }
     }
@@ -203,6 +196,10 @@ class PlayerFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         bottomNavigator.visibility = View.GONE
+    }
+
+    companion object {
+        private const val TRACK_KEY = "track"
     }
 
 }
