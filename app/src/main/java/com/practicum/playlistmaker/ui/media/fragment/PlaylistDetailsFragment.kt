@@ -30,7 +30,6 @@ import java.util.Locale
 class PlaylistDetailsFragment : Fragment() {
 
     private lateinit var binding: FragmentPlaylistDetailsBinding
-    private lateinit var bottomNavigator: BottomNavigationView
     private var playlist: Playlist? = null
     private lateinit var trackAdapter: PlaylistTrackAdapter
     private val viewModel: PlaylistDetailsViewModel by viewModel()
@@ -39,8 +38,6 @@ class PlaylistDetailsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = FragmentPlaylistDetailsBinding.inflate(inflater, container, false)
-        bottomNavigator = requireActivity().findViewById(R.id.bottomNavigationView)
-        bottomNavigator.visibility = View.GONE
         return binding.root
     }
 
@@ -253,7 +250,6 @@ class PlaylistDetailsFragment : Fragment() {
                 }
             }
             .show()
-
     }
 
     fun countPlaylistDuration(tracks: List<Track>): Long {
@@ -262,16 +258,6 @@ class PlaylistDetailsFragment : Fragment() {
             result += it.trackTimeMillis
         }
         return result
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        bottomNavigator.visibility = View.VISIBLE
-    }
-
-    override fun onResume() {
-        super.onResume()
-        bottomNavigator.visibility = View.GONE
     }
 
     companion object {

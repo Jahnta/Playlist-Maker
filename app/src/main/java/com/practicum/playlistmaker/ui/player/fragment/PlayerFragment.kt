@@ -32,7 +32,6 @@ import java.util.Locale
 
 class PlayerFragment : Fragment() {
     private lateinit var binding: FragmentPlayerBinding
-    private lateinit var bottomNavigator: BottomNavigationView
     private var track: Track? = null
     private lateinit var playlistAdapter: PlaylistBottomSheetAdapter
     private val viewModel: PlayerViewModel by viewModel { parametersOf(track) }
@@ -44,8 +43,6 @@ class PlayerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentPlayerBinding.inflate(inflater, container, false)
-        bottomNavigator = requireActivity().findViewById(R.id.bottomNavigationView)
-        bottomNavigator.visibility = View.GONE
         return binding.root
     }
 
@@ -186,16 +183,6 @@ class PlayerFragment : Fragment() {
 
             }
         }
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        bottomNavigator.visibility = View.VISIBLE
-    }
-
-    override fun onResume() {
-        super.onResume()
-        bottomNavigator.visibility = View.GONE
     }
 
     companion object {

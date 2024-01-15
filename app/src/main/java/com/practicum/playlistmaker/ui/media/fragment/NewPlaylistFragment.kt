@@ -32,7 +32,6 @@ import java.io.FileOutputStream
 
 open class NewPlaylistFragment : Fragment() {
     lateinit var binding: FragmentNewPlaylistBinding
-    private lateinit var bottomNavigator: BottomNavigationView
 
     private val viewModel: NewPlaylistViewModel by viewModel()
     var coverPath: Uri? = null
@@ -56,8 +55,6 @@ open class NewPlaylistFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentNewPlaylistBinding.inflate(inflater, container, false)
-        bottomNavigator = requireActivity().findViewById(R.id.bottomNavigationView)
-        bottomNavigator.visibility = View.GONE
         return binding.root
     }
 
@@ -109,7 +106,7 @@ open class NewPlaylistFragment : Fragment() {
                     requireContext()
                 )
 
-                requireActivity().supportFragmentManager.popBackStack()
+                findNavController().popBackStack()
             }
         }
 
@@ -155,11 +152,6 @@ open class NewPlaylistFragment : Fragment() {
         } else {
             findNavController().popBackStack()
         }
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        bottomNavigator.visibility = View.VISIBLE
     }
 
 }
