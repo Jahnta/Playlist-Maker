@@ -10,16 +10,11 @@ import com.practicum.playlistmaker.domain.search.model.SearchFragmentState
 import com.practicum.playlistmaker.domain.search.SearchInteractor
 import com.practicum.playlistmaker.domain.search.model.Track
 import com.practicum.playlistmaker.utils.debounce
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class SearchViewModel(
-    private val searchInteractor: SearchInteractor
+    private val interactor: SearchInteractor
 ) : ViewModel() {
-
-    companion object {
-        private const val SEARCH_DEBOUNCE_DELAY = 2000L
-    }
 
     private val handler = Handler(Looper.getMainLooper())
     private val searchRunnable = Runnable { searchRequest(latestSearchText) }
@@ -55,7 +50,7 @@ class SearchViewModel(
             renderState(SearchFragmentState.Loading)
 
             viewModelScope.launch {
-                searchInteractor
+                interactor
                     .searchTracks(newSearchText)
                     .collect { pair ->
                         processResult(pair.first, pair.second)
@@ -90,15 +85,15 @@ class SearchViewModel(
         _state.postValue(state)
     }
 
-    private fun getHistory() = searchInteractor.getAllTracks()
+    private fun getHistory() = interactor.getAllTracks()
 
 
     fun saveTrack(track: Track) {
-        searchInteractor.saveTrack(track)
+        interactor.saveTrack(track)
     }
 
     fun clearHistory() {
-        searchInteractor.clearHistory()
+        interactor.clearHistory()
         _state.value = SearchFragmentState.SearchHistory(
             emptyList()
         )
@@ -113,5 +108,9 @@ class SearchViewModel(
     fun stopSearch() {
         handler.removeCallbacks(searchRunnable)
         showHistory()
+    }
+
+    companion object {
+        private const val SEARCH_DEBOUNCE_DELAY = 2000L
     }
 }

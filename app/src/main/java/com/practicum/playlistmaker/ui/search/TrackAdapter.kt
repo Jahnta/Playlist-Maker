@@ -4,9 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.practicum.playlistmaker.databinding.TrackViewBinding
+import com.practicum.playlistmaker.domain.media.model.Playlist
 import com.practicum.playlistmaker.domain.search.model.Track
 
-class TrackAdapter(private val clickListener: ((Track) -> Unit)? = null) :
+class TrackAdapter(
+    private val clickListener: ((Track) -> Unit)?,
+    private val longClickListener: ((Track) -> Unit)?,
+) :
     RecyclerView.Adapter<TrackViewHolder>() {
 
     var tracks = ArrayList<Track>()
@@ -28,7 +32,18 @@ class TrackAdapter(private val clickListener: ((Track) -> Unit)? = null) :
         holder.bind(tracks[position])
         holder.itemView.setOnClickListener {
             clickListener?.invoke(tracks[position])
+            notifyDataSetChanged()
         }
+        holder.itemView.setOnLongClickListener {
+            longClickListener?.invoke(tracks[position])
+            notifyDataSetChanged()
+            return@setOnLongClickListener true
+        }
+    }
+    fun setItems(items: List<Track>) {
+        tracks.clear()
+        tracks.addAll(items)
+        notifyDataSetChanged()
     }
 
 }

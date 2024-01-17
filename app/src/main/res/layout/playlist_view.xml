@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/margin_16"
-    android:orientation="vertical">
+    android:layout_marginHorizontal="4dp"
+    android:orientation="vertical"
+    android:foreground="?attr/selectableItemBackground">
 
     <ImageView
         android:id="@+id/playlist_cover"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:src="@drawable/placeholder"
-        tools:src="@tools:sample/backgrounds/scenic" />
+        app:layout_constraintDimensionRatio="h, 1:1"
+        tools:src="@tools:sample/backgrounds/scenic"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
         android:id="@+id/playlist_title"
@@ -22,7 +27,9 @@
         android:fontFamily="@font/ys_display_regular"
         android:textColor="?attr/text_color_playlistText"
         android:textSize="@dimen/text_size_12"
-        tools:text="Название" />
+        tools:text="Название"
+        app:layout_constraintTop_toBottomOf="@id/playlist_cover"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
         android:id="@+id/playlist_tracks_count"
@@ -31,5 +38,7 @@
         android:fontFamily="@font/ys_display_regular"
         android:textColor="?attr/text_color_playlistText"
         android:textSize="@dimen/text_size_12"
-        tools:text="Количество треков" />
-</LinearLayout>
+        tools:text="Количество треков"
+        app:layout_constraintTop_toBottomOf="@id/playlist_title"
+        app:layout_constraintStart_toStartOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

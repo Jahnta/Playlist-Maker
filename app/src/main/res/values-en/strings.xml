@@ -10,4 +10,57 @@
     <string name="terms_text">License</string>
     <string name="media_message">Mediateca page</string>
     <string name="search_message">Search page</string>
+    <string name="no_data">Nothing found</string>
+    <string name="no_connection">Connection error</string>
+    <string name="refresh">Refresh</string>
+    <string name="clear_history">Clear history</string>
+    <string name="search_history_message">Search history</string>
+    <string name="duration_text">Duration</string>
+    <string name="trackAlbumText">Album</string>
+    <string name="trackYearText">Year</string>
+    <string name="trackGenreText">Genre</string>
+    <string name="trackCountryText">Country</string>
+    <string name="createPlaylist">New playlist</string>
+    <string name="noConnectionError">Connection error</string>
+    <string name="serverError">Server error</string>
+    <string name="favourites_is_empty">Your library is empty</string>
+    <string name="playlist_add">New playlist</string>
+    <string name="playlist_title_input_layout">Title</string>
+    <string name="playlist_desc_input_layout">Desription</string>
+    <string name="create">Create</string>
+    <string name="end_create_question">Do you want to finish creating playlist?</string>
+    <string name="warning">All unsaved data will be lost</string>
+    <string name="cancel">Cancel</string>
+    <string name="done">Done</string>
+    <string name="playlist_created">Playlist %s is saved</string>
+    <string name="no_data_to_share">Plyalist %s is empty</string>
+    <string name="add_to_playlist">Add to playlist</string>
+    <string name="added">Added to playlist</string>
+    <string name="already_in_playlist">Track is already in playlist %s</string>
+    <string name="no_tracks">Playlist is empty</string>
+    <string name="playlist_share">Share</string>
+    <string name="playlist_edit">Edit</string>
+    <string name="playlist_delete">Delete</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="delete_track_question">Do you want to delete track</string>
+    <string name="delete_playlist_question">Do you want to delete playlist?</string>
+    <string name="end_edit_question">Do you want to finish editing playlist?</string>
+    <string name="save">Save</string>
+    <string name="edit">Edit</string>
+    <string name="zero_duration">0 minutes</string>
+    <string name="zero_tracks">0 tracks</string>
+    <string name="favorite">Favorites</string>
+    <string name="playlists_text">Playlists</string>
+
+    <plurals name="minutes">
+        <item quantity="one">%d minute</item>
+        <item quantity="other">%d minutes</item>
+    </plurals>
+
+    <plurals name="tracks">
+        <item quantity="one">%d track</item>
+        <item quantity="other">%d tracks</item>
+    </plurals>
+    <string name="playlists_is_empty">You have not created any playlists yet</string>
 </resources>

@@ -7,9 +7,11 @@ import com.practicum.playlistmaker.domain.media.impl.FavouritesInteractorImpl
 import com.practicum.playlistmaker.domain.media.impl.PlaylistInteractorImpl
 import com.practicum.playlistmaker.domain.player.impl.PlayerInteractorImpl
 import com.practicum.playlistmaker.domain.search.model.Track
-import com.practicum.playlistmaker.ui.media.view_model.MediaFavouritesViewModel
-import com.practicum.playlistmaker.ui.media.view_model.MediaNewPlaylistViewModel
-import com.practicum.playlistmaker.ui.media.view_model.MediaPlaylistsViewModel
+import com.practicum.playlistmaker.ui.media.view_model.EditPlaylistViewModel
+import com.practicum.playlistmaker.ui.media.view_model.FavouritesViewModel
+import com.practicum.playlistmaker.ui.media.view_model.NewPlaylistViewModel
+import com.practicum.playlistmaker.ui.media.view_model.PlaylistDetailsViewModel
+import com.practicum.playlistmaker.ui.media.view_model.PlaylistsViewModel
 import com.practicum.playlistmaker.ui.player.view_model.PlayerViewModel
 import com.practicum.playlistmaker.ui.search.view_model.SearchViewModel
 import com.practicum.playlistmaker.ui.settings.view_model.SettingsViewModel
@@ -35,14 +37,22 @@ val viewModelModule = module {
     }
 
     viewModel {
-        MediaFavouritesViewModel(get())
+        FavouritesViewModel(get())
     }
 
     viewModel {
-        MediaPlaylistsViewModel(get())
+        PlaylistsViewModel(get())
     }
 
     viewModel {
-        MediaNewPlaylistViewModel(get())
+        NewPlaylistViewModel(get())
+    }
+
+    viewModel {
+        PlaylistDetailsViewModel(get())
+    }
+
+    viewModel {
+        EditPlaylistViewModel(get())
     }
 }

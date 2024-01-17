@@ -42,6 +42,7 @@ class SearchRepositoryImpl(
                             it.trackName,
                             it.artistName,
                             it.trackTimeMillis,
+                            it.artworkUrl60,
                             it.artworkUrl100,
                             it.collectionName,
                             it.country,
